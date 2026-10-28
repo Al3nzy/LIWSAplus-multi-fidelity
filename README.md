@@ -1,6 +1,6 @@
 <div align="center">
 
-# LIWSA-MF2
+# LIWSA-MF
 
 ### Multi-fidelity, risk-aware scheduling for scientific workflows
 
