@@ -7,16 +7,21 @@
 Reproducible algorithms, WorkflowSim experiments, and analysis tools for studying
 the trade-offs between workflow makespan, execution cost, and scheduling risk.
 
+**Dr. Mohammed Alaa Ala'anzy**  
+SDU University, Kaskelen, Kazakhstan  
+📄 **Manuscript status:** Under review
+
 [![Java](https://img.shields.io/badge/Java-8%2B-007396?logo=openjdk&logoColor=white)](https://openjdk.org/)
 [![Python](https://img.shields.io/badge/Python-3-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![WorkflowSim](https://img.shields.io/badge/Simulator-WorkflowSim-5865F2)](https://github.com/WorkflowSim/WorkflowSim-1.0)
+[![Paper](https://img.shields.io/badge/Paper-under%20review-8A5CF6)](#research-focus)
 [![Reproducible experiments](https://img.shields.io/badge/Research-reproducible-2E8B57)](#reproducing-and-interpreting-results)
 
 </div>
 
 ---
 
-## At a glance
+## 🔭 At a glance
 
 LIWSA-MF2 is a research codebase for evaluating workflow schedulers under
 multi-objective and risk-aware settings. It includes the original LIWSA method,
@@ -25,9 +30,67 @@ multi-objective algorithms, benchmark workflows, and scripts to regenerate
 reports, tables, and plots.
 
 The package contains **20 Pegasus workflow definitions** from five workflow
-families, along with a complete set of reference experiment outputs.
+families. It includes reference experiment outputs and the scripts needed to
+reproduce the analyses.
 
-## Results
+## 🧭 Research focus
+
+Workflow scheduling is a multi-objective problem: a schedule that minimizes
+completion time may cost more, while a cheaper schedule may take longer or be
+more vulnerable to uncertain execution times and slow virtual machines. This
+work studies a Pareto-based search approach for exploring those trade-offs,
+then examines whether more faithful simulation and multi-fidelity evaluation
+can make the search results more reliable and efficient.
+
+### 🧠 Methodology
+
+1. **Represent a schedule.** A candidate maps each workflow task, in
+   topological order, to a virtual machine.
+2. **Optimize competing objectives.** The search evaluates makespan and
+   execution cost together, preserving non-dominated alternatives rather than
+   collapsing them into a single weighted score.
+3. **Explore alternative assignments.** LIWSA uses density-adaptive solitary
+   and social search moves. LIWSA+ combines these with canonical evolutionary,
+   critical-path, cost-directed, and estimate-guided moves.
+4. **Preserve and adapt.** LIWSA+ uses Pareto-rank and crowding-based
+   population survival, maintains an archive of evaluated non-dominated
+   schedules, and adapts variation-operator selection based on observed
+   contributions during the run.
+5. **Evaluate fidelity and risk.** A simulator-faithful decoder models
+   WorkflowSim scheduling behavior, including stage-in, per-VM input-file
+   caching, and FCFS execution. Risk-aware experiments evaluate schedules
+   across perturbed task lengths and machine speeds; CVaR can emphasize poor
+   makespan outcomes in the scenario tail.
+6. **Test multi-fidelity screening.** When full scenario evaluation is
+   expensive, candidate pools can be screened using nominal decoder values,
+   online ridge models, or boosted trees before selected candidates receive
+   expensive evaluation. Random-selection controls and equal-budget
+   comparisons are included.
+
+### ✨ Research contributions examined
+
+The repository implements and evaluates the following methodological
+elements. These describe the scope of this work; they are not a claim that
+each element is individually unprecedented:
+
+- **A density-adaptive, Pareto-based LIWSA search** for discrete
+  task-to-machine assignments, together with a population-based LIWSA+
+  extension.
+- **Search operators informed by schedule structure:** critical-chain moves
+  target tasks contributing to the current makespan, while cost moves consider
+  machine price per unit of work.
+- **Online adaptive operator selection** and an anytime archive of
+  non-dominated solutions, with ablations to examine component effects.
+- **A simulator-faithful scheduling decoder** validated against full
+  WorkflowSim, reducing discrepancies between search-time estimates and
+  simulator-measured outcomes.
+- **Risk-aware and multi-fidelity evaluation** combining perturbed scenarios,
+  CVaR objectives, candidate pre-screening, and learned surrogate models.
+- **A reproducible comparative study** against NSGA-II, SPEA2, MOEA/D, HEFT,
+  and Min-Min across workflow families, workflow sizes, pricing settings, and
+  algorithm ablations.
+
+## 📊 Results
 
 The figures below are generated from the included experiment outputs. Click a
 figure to open its PDF version.
@@ -71,16 +134,25 @@ figure to open its PDF version.
   </tr>
 </table>
 
-In the simulator-replay analysis, LIWSA+ recorded a **+1.84% mean hypervolume
-difference** versus original LIWSA across 15 instances (225 runs). This
-comparison was **not statistically significant** in the reported paired test
-(*p* = 0.1354); see the complete report before interpreting the result.
+### 📌 Selected findings from the included reference run
 
-Explore all available plots, tables, and reports in
+| Experiment | Reported result |
+|---|---|
+| **Main comparison** | Under original pricing, LIWSA+ archive hypervolume was **1.40% higher on average** than original LIWSA across 20 workflows; wins/losses **19/1**, Holm-adjusted *p* < 0.001. |
+| **Decoder fidelity** | Across 128 comparisons with full WorkflowSim, the simulator-faithful decoder's mean relative error was **0.007% for makespan** and **0.013% for cost**. |
+| **Simulator replay** | On 15 replayed instances, LIWSA+ showed a **+1.84% mean hypervolume difference** versus original LIWSA; this paired comparison was **not statistically significant** (*p* = 0.1354). |
+
+These are results from the checked-in reference outputs, not a guarantee of
+performance on other workloads or settings. Multi-fidelity surrogate checks
+show improved candidate ranking in some configurations, but do **not** show
+better final outcomes than nominal pre-screening in the reported checks. See
+the full reports and figures before drawing conclusions.
+
+Browse all available plots, tables, and reports in
 [`RESULTS/index.html`](RESULTS/index.html) or browse the
 [`RESULTS/` folder](RESULTS/).
 
-## What’s included
+## 🧰 What’s included
 
 | Area | Contents |
 |---|---|
@@ -94,7 +166,7 @@ The reduced `sources/` tree contains the CloudSim/WorkflowSim classes used by
 the experiments and the LIWSA planning implementations. The repository does
 not include the earlier GNN warm-start code or earlier baselines.
 
-## Quick start
+## 🚀 Quick start
 
 ### Requirements
 
@@ -139,7 +211,7 @@ experiments, analysis, and figure generation. Outputs are collected in
 `compile`, `seeds`, `fidelity`, `faithful`, `sensitivity`, `robustness`,
 `multifidelity`, `simcheck`, `mlchecks`, and `figures`.
 
-## Reproducing and interpreting results
+## 🔬 Reproducing and interpreting results
 
 - The included `experiments/reference_results/` contains a complete reference
   run with reports, tables, and figures.
@@ -157,7 +229,7 @@ experiments, analysis, and figure generation. Outputs are collected in
 - Learned surrogates improved ranking quality in the reported checks, but did
   not improve the final result over nominal pre-screening.
 
-## Repository map
+## 🗂️ Repository map
 
 ```text
 config/dax/                       Pegasus workflow inputs
@@ -176,7 +248,7 @@ To verify a copy against the included manifest, run:
 python experiments/check_install.py
 ```
 
-## License and third-party notices
+## 📜 License and third-party notices
 
 See [`license.txt`](license.txt) and
 [`license-workflowsim.txt`](license-workflowsim.txt) for the licensing
