@@ -1,0 +1,35 @@
+== RANKING QUALITY (mean over workflows; model vs nominal), risk-aware setting, 2 seeds
+ridge on 10 descriptors: rho makespan nominal 0.736 -> model 0.804 | rho cost 0.924 -> 0.899 | overlap 0.343 -> 0.343 (chance 0.20)
+ridge on rich features: rho makespan nominal 0.801 -> model 0.915 | rho cost 0.944 -> 0.981 | overlap 0.331 -> 0.503 (chance 0.20)
+boosted trees on rich features: rho makespan nominal 0.546 -> model 0.887 | rho cost 0.872 -> 0.955 | overlap 0.245 -> 0.533 (chance 0.20)
+
+== CANDIDATE-POOL SIZE K (rc), development workflows: mean gain over LIWSA+ (%) and mean search time (ms)
+K=5: nominal +7.27% (212 ms)
+K=10: nominal +6.20% (340 ms) | rich ridge +8.54% (543 ms) | boosted +5.42% (758 ms)
+K=20: nominal +7.73% (677 ms) | rich ridge +13.22% (428 ms) | boosted +16.30% (815 ms)
+
+== CANDIDATE-POOL SIZE K (rm), development workflows: mean gain over LIWSA+ (%) and mean search time (ms)
+K=10: 
+K=20: 
+
+== HARSHER TAIL RISK (CVaR 0.9, 40% stragglers), development workflows: gain over LIWSA+ | vs nominal pre-screening
+  NSGA-II      -1.19% |  +1.97%
+  nominal      -3.10% |  +0.00%
+  ridge10     -11.19% |  -8.34%
+  rich ridge  -12.78% |  -9.99%
+  boosted      -0.17% |  +3.02%
+  ranking sao: rho makespan 0.772 -> 0.763, overlap 0.398 -> 0.376
+  ranking sal: rho makespan 0.873 -> 0.918, overlap 0.326 -> 0.483
+  ranking sag: rho makespan 0.748 -> 0.905, overlap 0.362 -> 0.491
+
+== HEDGED SELECTION (rc), development workflows: gain over LIWSA+ | vs nominal pre-screening | mean search time (ms)
+  nominal               +7.27% |  +0.00% | 212
+  ridge10               +3.84% |  -3.19% | 121
+  ridge10 + hedge       +1.82% |  -5.07% | 262
+  rich ridge + hedge   +11.21% |  +3.68% | 509
+  boosted + hedge       +8.98% |  +1.59% | 1006
+
+== HEDGED SELECTION (rm), development workflows: gain over LIWSA+ | vs nominal pre-screening | mean search time (ms)
+  ridge10 + hedge        +nan% |   +nan% | 290
+  rich ridge + hedge     +nan% |   +nan% | 215
+  boosted + hedge        +nan% |   +nan% | 694

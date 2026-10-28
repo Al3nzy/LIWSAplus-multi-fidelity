@@ -1,0 +1,12 @@
+simulator-replayed fronts: 225 runs, 15 instances, conditions ['LIWSA.f-plus', 'LIWSAP.f-plus', 'MOEAD.f-plus', 'NSGA2.f-plus', 'SPEA2.f-plus']
+
+Simulator-measured hypervolume, paired over instances (A vs B)
+   LIWSAP.f-plus vs LIWSA.f-plus    +1.84% [+0.72,+3.05] med +0.68%  W/L 11/4 of 15  p=0.1354
+   LIWSAP.f-plus vs MOEAD.f-plus    -0.47% [-1.15,+0.16] med -0.01%  W/L 6/9 of 15  p=0.2293
+   LIWSAP.f-plus vs NSGA2.f-plus    -0.05% [-0.54,+0.38] med +0.08%  W/L 9/6 of 15  p=0.9780
+   LIWSAP.f-plus vs SPEA2.f-plus    +0.36% [-0.16,+0.95] med +0.13%  W/L 9/6 of 15  p=0.8469
+
+Planning-level (decoder) HV of the SAME replayed points, for reference
+   LIWSAP.f-plus vs NSGA2.f-plus    -0.06% [-0.55,+0.37] med +0.08%  W/L 9/6 of 15  p=0.9780
+
+median |simulator - decoder| / decoder: makespan 0.00%, cost 0.00% (n=1104 replayed schedules)

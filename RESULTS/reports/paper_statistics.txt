@@ -1,0 +1,389 @@
+== FIDELITY (vs full WorkflowSim), n = 128
+Analytic gap-filling decoder: makespan mean 12.955% median 0.392% max 66.04%; cost mean 12.768% max 57.93%
+Simulator-faithful decoder: makespan mean 0.007% median 0.000% max 0.21%; cost mean 0.013% max 0.15%
+
+== MAIN COMPARISON, original pricing, runs=1925
+hv_arc     LIWSA+ vs NSGA-II                 +0.29% [-0.21,+0.91] med +0.09%  W/L 17/3 of 20  p=0.0037 holm=0.007
+hv_arc     LIWSA+ vs SPEA2                   +0.35% [-0.07,+0.92] med +0.10%  W/L 19/1 of 20  p=0.0002 holm=<0.001
+hv_arc     LIWSA+ vs MOEA/D                  +0.34% [-0.19,+0.93] med +0.24%  W/L 17/3 of 20  p=0.0023 holm=0.007
+hv_arc     LIWSA+ vs LIWSA (original moves)  +1.40% [+0.48,+2.65] med +0.38%  W/L 19/1 of 20  p=0.0000 holm=<0.001
+hv_arc      SPEA2 vs NSGA-II                 -0.07% [-0.19,+0.02] med +0.00%  W/L 12/8 of 20  p=0.2943 holm=0.294
+hv_pop     LIWSA+ vs NSGA-II                 +0.26% [-0.23,+0.88] med +0.05%  W/L 15/5 of 20  p=0.3300 holm=0.495
+hv_pop     LIWSA+ vs SPEA2                   +0.31% [-0.10,+0.88] med +0.07%  W/L 16/4 of 20  p=0.1650 holm=0.495
+hv_pop     LIWSA+ vs MOEA/D                  +1.65% [+0.99,+2.30] med +1.91%  W/L 19/1 of 20  p=0.0001 holm=<0.001
+hv_pop     LIWSA+ vs LIWSA (original moves) +12.87% [+7.16,+18.83] med +4.74%  W/L 20/0 of 20  p=0.0000 holm=<0.001
+hv_pop      SPEA2 vs NSGA-II                 -0.06% [-0.18,+0.03] med +0.01%  W/L 12/8 of 20  p=0.2455 holm=0.495
+LIWSA+ vs heft: mean +82.7% median +49.0%
+LIWSA+ vs minmin: mean +125.1% median +97.1%
+NSGA-II with sweep seeds vs HEFT/Min-Min seeds only: mean +9.84% median +1.57%
+
+== MAIN COMPARISON, linear pricing, runs=1050
+hv_arc     LIWSA+ vs NSGA-II                 +0.03% [-0.01,+0.06] med +0.00%  W/L 10/10 of 20  p=0.5706 holm=1.000
+hv_arc     LIWSA+ vs SPEA2                   +0.01% [-0.03,+0.05] med -0.00%  W/L 8/12 of 20  p=1.0000 holm=1.000
+hv_arc     LIWSA+ vs MOEA/D                  +0.10% [+0.01,+0.20] med +0.02%  W/L 17/3 of 20  p=0.0005 holm=0.002
+hv_arc     LIWSA+ vs LIWSA (original moves)  +0.57% [+0.26,+0.99] med +0.20%  W/L 20/0 of 20  p=0.0000 holm=<0.001
+hv_arc      SPEA2 vs NSGA-II                 +0.02% [+0.01,+0.03] med +0.01%  W/L 18/2 of 20  p=0.0020 holm=0.006
+hv_pop     LIWSA+ vs NSGA-II                 +0.02% [-0.02,+0.05] med +0.00%  W/L 10/10 of 20  p=0.6742 holm=0.674
+hv_pop     LIWSA+ vs SPEA2                   -0.02% [-0.06,+0.03] med -0.01%  W/L 6/14 of 20  p=0.2611 holm=0.522
+hv_pop     LIWSA+ vs MOEA/D                  +1.13% [+0.88,+1.41] med +1.07%  W/L 20/0 of 20  p=0.0000 holm=<0.001
+hv_pop     LIWSA+ vs LIWSA (original moves)  +3.25% [+1.01,+5.91] med +0.54%  W/L 20/0 of 20  p=0.0000 holm=<0.001
+hv_pop      SPEA2 vs NSGA-II                 +0.03% [+0.02,+0.06] med +0.02%  W/L 19/1 of 20  p=0.0004 holm=0.001
+LIWSA+ vs heft: mean +36.4% median +2.3%
+LIWSA+ vs minmin: mean +38.0% median +3.6%
+
+== MAIN COMPARISON, premium pricing, runs=1050
+hv_arc     LIWSA+ vs NSGA-II                 +0.16% [+0.11,+0.21] med +0.17%  W/L 19/1 of 20  p=0.0005 holm=0.001
+hv_arc     LIWSA+ vs SPEA2                   +0.12% [+0.08,+0.17] med +0.14%  W/L 17/3 of 20  p=0.0328 holm=0.033
+hv_arc     LIWSA+ vs MOEA/D                  +0.32% [+0.23,+0.42] med +0.28%  W/L 20/0 of 20  p=0.0000 holm=<0.001
+hv_arc     LIWSA+ vs LIWSA (original moves)  +0.74% [+0.64,+0.85] med +0.71%  W/L 20/0 of 20  p=0.0000 holm=<0.001
+hv_arc      SPEA2 vs NSGA-II                 +0.04% [+0.02,+0.06] med +0.02%  W/L 17/3 of 20  p=0.0064 holm=0.013
+hv_pop     LIWSA+ vs NSGA-II                 -0.17% [-0.26,-0.09] med -0.15%  W/L 3/17 of 20  p=0.0037 holm=0.004
+hv_pop     LIWSA+ vs SPEA2                   -0.38% [-0.43,-0.33] med -0.35%  W/L 0/20 of 20  p=0.0000 holm=<0.001
+hv_pop     LIWSA+ vs MOEA/D                  +2.24% [+1.40,+3.23] med +1.21%  W/L 20/0 of 20  p=0.0000 holm=<0.001
+hv_pop     LIWSA+ vs LIWSA (original moves) +49.37% [+39.35,+59.91] med +42.07%  W/L 20/0 of 20  p=0.0000 holm=<0.001
+hv_pop      SPEA2 vs NSGA-II                 +0.21% [+0.16,+0.26] med +0.17%  W/L 20/0 of 20  p=0.0000 holm=<0.001
+LIWSA+ vs heft: mean +187.8% median +173.9%
+LIWSA+ vs minmin: mean +153.7% median +143.9%
+
+== MAIN COMPARISON on the 15 workflows not used for any design decision (original pricing)
+archive LIWSA+ vs NSGA-II:  +0.52% [+0.06,+1.26] med +0.09%  W/L 14/1 of 15  p=0.0015 holm=0.003
+archive LIWSA+ vs SPEA2:  +0.55% [+0.10,+1.24] med +0.17%  W/L 15/0 of 15  p=0.0001 holm=<0.001
+archive LIWSA+ vs MOEA/D:  +0.55% [+0.00,+1.28] med +0.25%  W/L 13/2 of 15  p=0.0034 holm=0.003
+archive LIWSA+ vs LIWSA (original moves):  +1.63% [+0.43,+3.13] med +0.38%  W/L 14/1 of 15  p=0.0002 holm=<0.001
+population LIWSA+ vs NSGA-II:  +0.48% [+0.03,+1.22] med +0.08%  W/L 11/4 of 15  p=0.4543 holm=0.459
+population LIWSA+ vs SPEA2:  +0.50% [+0.06,+1.19] med +0.08%  W/L 12/3 of 15  p=0.2293 holm=0.459
+population LIWSA+ vs MOEA/D:  +1.89% [+1.24,+2.61] med +2.19%  W/L 15/0 of 15  p=0.0001 holm=<0.001
+population LIWSA+ vs LIWSA (original moves): +15.25% [+8.34,+22.49] med +11.47%  W/L 15/0 of 15  p=0.0001 holm=<0.001
+
+== ABLATION (original pricing), A vs B = effect of component/seeds
+hv_arc LIWSA+ vs LIWSA+ without guided moves:  +0.24% [-0.15,+0.74] med +0.06%  W/L 17/3 of 20  p=0.0073 holm=0.029
+hv_arc LIWSA+ vs LIWSA+ without estimate move:  -0.07% [-0.22,+0.04] med +0.00%  W/L 11/9 of 20  p=0.7012 holm=1.000
+hv_arc LIWSA+ vs LIWSA+ without locust moves:  +0.01% [-0.12,+0.13] med +0.00%  W/L 11/9 of 20  p=0.8983 holm=1.000
+hv_arc LIWSA+ vs LIWSA+ without online operator learning:  -0.11% [-0.29,+0.01] med +0.00%  W/L 13/7 of 20  p=0.2305 holm=0.692
+hv_arc NSGA-II vs NSGA-II (HEFT/Min-Min seeds only):  +9.84% [+4.14,+16.63] med +1.57%  W/L 18/2 of 20  p=0.0000 holm=<0.001
+hv_arc LIWSA (original moves) vs LIWSA (HEFT/Min-Min seeds only): +11.70% [+4.92,+19.77] med +1.70%  W/L 19/1 of 20  p=0.0001 holm=<0.001
+
+== PER FAMILY, LIWSA+ vs NSGA-II (archive front, original pricing)
+Montage: mean +0.15% per workflow [0.08, 0.12, 0.22, 0.16]
+CyberShake: mean +0.73% per workflow [0.34, -2.33, -0.24, 5.16]
+Sipht: mean +0.03% per workflow [0.01, 0.01, 0.01, 0.09]
+Epigenomics: mean +0.06% per workflow [0.01, -0.0, 0.19, 0.03]
+Inspiral: mean +0.47% per workflow [0.16, 0.18, 1.47, 0.06]
+
+== SEARCH TIME (ms), small / 1000-task
+NSGA-II: 53 / 702
+SPEA2: 69 / 700
+MOEA/D: 42 / 665
+LIWSA (original moves): 96 / 1524
+LIWSA+: 60 / 754
+LIWSA+ without guided moves: 65 / 910
+distinct non-dominated points in the final population: {'NSGA-II': np.float64(26.4), 'SPEA2': np.float64(29.6), 'MOEA/D': np.float64(14.7), 'LIWSA (original moves)': np.float64(6.3), 'LIWSA+': np.float64(25.3)}
+
+== PER-WORKFLOW METRIC TABLES written (makespan, cost, hypervolume, distinct points, time)
+
+== SENSITIVITY of LIWSA+ (archive HV vs default, all 20 workflows, 5 seeds)
+alpha01:  +0.03% [-0.07,+0.16] med +0.00%  W/L 12/8 of 20  p=0.3884 holm=1.000
+alpha05:  +0.14% [+0.00,+0.31] med +0.00%  W/L 12/8 of 20  p=0.0637 holm=0.637
+mf0005:  -0.08% [-0.21,+0.02] med +0.00%  W/L 3/6 of 20  p=0.6784 holm=1.000
+mf005:  +0.15% [-0.02,+0.40] med +0.00%  W/L 8/7 of 20  p=0.4955 holm=1.000
+mf010:  +0.02% [-0.18,+0.27] med +0.00%  W/L 10/10 of 20  p=0.7012 holm=1.000
+pmin002:  -0.07% [-0.30,+0.07] med -0.00%  W/L 10/10 of 20  p=0.2774 holm=1.000
+pmin005:  +0.16% [+0.04,+0.34] med +0.01%  W/L 14/6 of 20  p=0.0637 holm=0.637
+pmin020:  +0.10% [-0.03,+0.28] med -0.00%  W/L 8/12 of 20  p=0.4749 holm=1.000
+pop20:  +0.09% [-0.21,+0.47] med -0.00%  W/L 8/12 of 20  p=0.7562 holm=1.000
+pop50:  -0.19% [-0.37,-0.04] med -0.01%  W/L 5/15 of 20  p=0.0296 holm=0.325
+sweep0:  -0.64% [-1.00,-0.34] med -0.36%  W/L 1/19 of 20  p=0.0000 holm=<0.001
+sweep16:  -0.00% [-0.18,+0.18] med -0.00%  W/L 8/12 of 20  p=0.9273 holm=1.000
+sweep4:  -0.09% [-0.23,+0.01] med -0.02%  W/L 6/14 of 20  p=0.0215 holm=0.258
+
+== EXPENSIVE-OBJECTIVE STUDY (ALL 20); out-of-sample hypervolume gain (%)
+rc MF vs LIWSA+:  +2.25% [-3.05,+5.67] med +5.00%  W/L 18/2 of 20  p=0.0003 holm=0.008
+rm MF vs LIWSA+:  +2.15% [+0.81,+3.90] med +0.62%  W/L 19/1 of 20  p=0.0003 holm=0.006
+rc random pre-selection vs LIWSA+:  +0.32% [-0.70,+1.37] med +0.20%  W/L 11/9 of 20  p=0.5459 holm=1.000
+rm random pre-selection vs LIWSA+:  +0.07% [-0.47,+0.68] med -0.02%  W/L 9/11 of 20  p=0.5217 holm=1.000
+rc MF + ridge vs LIWSA+:  +3.48% [+2.05,+5.07] med +2.97%  W/L 18/2 of 20  p=0.0007 holm=0.016
+rm MF + ridge vs LIWSA+:  +1.98% [+0.69,+3.71] med +0.63%  W/L 19/1 of 20  p=0.0001 holm=0.002
+rc MF + ridge + HVI vs LIWSA+:  +4.06% [+2.03,+6.37] med +3.68%  W/L 16/4 of 20  p=0.0014 holm=0.029
+rm MF + ridge + HVI vs LIWSA+:  +1.70% [+0.53,+3.24] med +0.56%  W/L 17/3 of 20  p=0.0010 holm=0.019
+rc OLS immigrants vs LIWSA+:  +0.55% [-0.07,+1.22] med +0.78%  W/L 12/8 of 20  p=0.5706 holm=1.000
+rm OLS immigrants vs LIWSA+:  -0.06% [-0.22,+0.07] med -0.05%  W/L 8/12 of 20  p=0.5217 holm=1.000
+rc MF vs random pre-selection:  +2.09% [-3.63,+5.91] med +3.11%  W/L 17/3 of 20  p=0.0003 holm=0.007
+rm MF vs random pre-selection:  +2.08% [+0.80,+3.67] med +0.68%  W/L 18/2 of 20  p=0.0005 holm=0.011
+rc MF vs MF + ridge:  -1.19% [-6.10,+1.94] med +0.52%  W/L 15/5 of 20  p=0.0441 holm=0.485
+rm MF vs MF + ridge:  +0.16% [-0.09,+0.45] med +0.07%  W/L 11/9 of 20  p=0.3118 holm=1.000
+rc MF vs MF + ridge + HVI:  -1.75% [-6.43,+1.32] med +1.21%  W/L 11/9 of 20  p=0.6742 holm=1.000
+rm MF vs MF + ridge + HVI:  +0.43% [-0.00,+0.88] med +0.16%  W/L 13/7 of 20  p=0.3884 holm=1.000
+rc MF vs NSGA-II:  +4.62% [-0.94,+8.63] med +7.26%  W/L 17/3 of 20  p=0.0023 holm=0.044
+rm MF vs NSGA-II:  +1.78% [+0.91,+2.86] med +0.81%  W/L 19/1 of 20  p=0.0005 holm=0.011
+rc MF vs SPEA2:  +5.08% [-0.55,+9.11] med +7.22%  W/L 18/2 of 20  p=0.0003 holm=0.008
+rm MF vs SPEA2:  +1.58% [+0.86,+2.39] med +0.93%  W/L 16/4 of 20  p=0.0064 holm=0.089
+rc MF vs MOEA/D:  +3.86% [-1.61,+7.28] med +5.60%  W/L 19/1 of 20  p=0.0001 holm=0.002
+rm MF vs MOEA/D:  +2.26% [+1.40,+3.25] med +1.85%  W/L 20/0 of 20  p=0.0000 holm=<0.001
+rc LIWSA+ vs NSGA-II:  +2.47% [+0.00,+4.81] med +3.00%  W/L 16/4 of 20  p=0.0136 holm=0.177
+rm LIWSA+ vs NSGA-II:  -0.31% [-1.02,+0.25] med +0.09%  W/L 12/8 of 20  p=0.8983 holm=1.000
+rc LIWSA+ vs SPEA2:  +2.85% [+0.82,+4.78] med +2.75%  W/L 16/4 of 20  p=0.0107 holm=0.150
+rm LIWSA+ vs SPEA2:  -0.49% [-1.47,+0.27] med +0.12%  W/L 12/8 of 20  p=0.7285 holm=1.000
+rc MF + rich ridge vs LIWSA+:  +1.30% [-0.50,+3.16] med +1.17%  W/L 12/8 of 20  p=0.9273 holm=1.000
+rm MF + rich ridge vs LIWSA+:  +1.92% [+0.55,+3.71] med +0.45%  W/L 18/2 of 20  p=0.0001 holm=0.003
+rc MF + boosted trees vs LIWSA+:  +1.26% [-0.40,+3.07] med +1.30%  W/L 13/7 of 20  p=0.4524 holm=1.000
+rm MF + boosted trees vs LIWSA+:  +1.80% [+0.43,+3.58] med +0.33%  W/L 17/3 of 20  p=0.0012 holm=0.022
+rc MF + rich ridge + HVI vs LIWSA+:  +1.23% [-0.66,+2.99] med +2.05%  W/L 15/5 of 20  p=0.1429 holm=1.000
+rm MF + rich ridge + HVI vs LIWSA+:  +1.37% [+0.32,+2.73] med +0.17%  W/L 16/4 of 20  p=0.0215 holm=0.223
+rc MF + boosted trees + HVI vs LIWSA+:  +1.10% [-0.44,+2.72] med +1.12%  W/L 15/5 of 20  p=0.1231 holm=1.000
+rm MF + boosted trees + HVI vs LIWSA+:  +1.58% [+0.51,+2.97] med +0.51%  W/L 17/3 of 20  p=0.0009 holm=0.017
+rc MF + rich ridge vs MF:  +0.89% [-4.33,+9.90] med -2.90%  W/L 4/16 of 20  p=0.0010 holm=0.021
+rm MF + rich ridge vs MF:  -0.22% [-0.57,+0.07] med +0.08%  W/L 11/9 of 20  p=0.8408 holm=1.000
+rc MF + boosted trees vs MF:  +0.64% [-3.99,+8.59] med -2.89%  W/L 5/15 of 20  p=0.0042 holm=0.072
+rm MF + boosted trees vs MF:  -0.33% [-0.54,-0.15] med -0.34%  W/L 6/14 of 20  p=0.0172 holm=0.223
+rc MF + rich ridge + HVI vs MF:  +0.73% [-4.36,+9.27] med -2.64%  W/L 5/15 of 20  p=0.0073 holm=0.117
+rm MF + rich ridge + HVI vs MF:  -0.73% [-1.23,-0.28] med -0.46%  W/L 6/14 of 20  p=0.0192 holm=0.223
+rc MF + boosted trees + HVI vs MF:  +0.46% [-3.97,+8.16] med -2.50%  W/L 3/17 of 20  p=0.0003 holm=0.007
+rm MF + boosted trees + HVI vs MF:  -0.53% [-1.00,-0.11] med -0.17%  W/L 6/14 of 20  p=0.0759 holm=0.683
+rc MF + rich ridge vs MF + ridge:  -2.07% [-3.69,-0.59] med -2.02%  W/L 6/14 of 20  p=0.0266 holm=0.320
+rm MF + rich ridge vs MF + ridge:  -0.06% [-0.41,+0.25] med +0.05%  W/L 12/8 of 20  p=0.6477 holm=1.000
+rc MF + boosted trees vs MF + rich ridge:  -0.01% [-0.84,+0.80] med -0.15%  W/L 9/11 of 20  p=0.8408 holm=1.000
+rm MF + boosted trees vs MF + rich ridge:  -0.11% [-0.34,+0.17] med -0.13%  W/L 3/17 of 20  p=0.0014 holm=0.024
+rc MF + rich ridge vs NSGA-II:  +3.73% [+0.98,+6.11] med +4.27%  W/L 17/3 of 20  p=0.0032 holm=0.057
+rm MF + rich ridge vs NSGA-II:  +1.56% [+0.65,+2.67] med +0.73%  W/L 17/3 of 20  p=0.0027 holm=0.041
+rc MF + rich ridge vs SPEA2:  +4.12% [+1.86,+6.30] med +4.65%  W/L 16/4 of 20  p=0.1054 holm=1.000
+rm MF + rich ridge vs SPEA2:  +1.35% [+0.63,+2.15] med +0.71%  W/L 17/3 of 20  p=0.0020 holm=0.032
+rc MF + rich ridge vs MOEA/D:  +2.84% [+0.87,+4.87] med +1.90%  W/L 14/6 of 20  p=0.2162 holm=1.000
+rm MF + rich ridge vs MOEA/D:  +2.04% [+1.12,+3.10] med +1.43%  W/L 19/1 of 20  p=0.0000 holm=<0.001
+rc MF + rich ridge + HVI vs NSGA-II:  +3.61% [+1.42,+5.83] med +3.79%  W/L 16/4 of 20  p=0.0083 holm=0.125
+rm MF + rich ridge + HVI vs NSGA-II:  +1.01% [+0.42,+1.73] med +0.42%  W/L 17/3 of 20  p=0.0172 holm=0.223
+
+== EXPENSIVE-OBJECTIVE STUDY (15 held-out workflows); out-of-sample hypervolume gain (%)
+rc MF vs LIWSA+:  +0.97% [-5.73,+5.13] med +2.56%  W/L 13/2 of 15  p=0.0054 holm=0.107
+rm MF vs LIWSA+:  +2.11% [+0.61,+4.24] med +0.51%  W/L 14/1 of 15  p=0.0034 holm=0.064
+rc random pre-selection vs LIWSA+:  +0.35% [-0.92,+1.62] med +0.31%  W/L 8/7 of 15  p=0.5614 holm=1.000
+rm random pre-selection vs LIWSA+:  +0.22% [-0.23,+0.92] med -0.07%  W/L 5/10 of 15  p=0.2524 holm=1.000
+rc MF + ridge vs LIWSA+:  +3.46% [+2.25,+4.95] med +2.63%  W/L 15/0 of 15  p=0.0001 holm=0.002
+rm MF + ridge vs LIWSA+:  +1.84% [+0.54,+3.79] med +0.60%  W/L 14/1 of 15  p=0.0012 holm=0.026
+rc MF + ridge + HVI vs LIWSA+:  +3.01% [+1.15,+5.08] med +2.90%  W/L 12/3 of 15  p=0.0015 holm=0.037
+rm MF + ridge + HVI vs LIWSA+:  +1.74% [+0.49,+3.54] med +0.57%  W/L 13/2 of 15  p=0.0015 holm=0.032
+rc OLS immigrants vs LIWSA+:  +0.71% [-0.03,+1.56] med +0.85%  W/L 9/6 of 15  p=0.4543 holm=1.000
+rm OLS immigrants vs LIWSA+:  -0.04% [-0.14,+0.09] med -0.05%  W/L 5/10 of 15  p=0.2293 holm=1.000
+rc MF vs random pre-selection:  +0.83% [-6.54,+5.70] med +2.91%  W/L 12/3 of 15  p=0.0034 holm=0.077
+rm MF vs random pre-selection:  +1.86% [+0.66,+3.36] med +0.67%  W/L 14/1 of 15  p=0.0043 holm=0.077
+rc MF vs MF + ridge:  -2.44% [-8.57,+1.02] med +0.45%  W/L 10/5 of 15  p=0.2078 holm=1.000
+rm MF vs MF + ridge:  +0.25% [-0.04,+0.58] med +0.14%  W/L 9/6 of 15  p=0.3894 holm=1.000
+rc MF vs MF + ridge + HVI:  -2.06% [-8.09,+1.58] med +1.46%  W/L 9/6 of 15  p=0.6788 holm=1.000
+rm MF vs MF + ridge + HVI:  +0.35% [+0.00,+0.72] med +0.09%  W/L 9/6 of 15  p=0.9341 holm=1.000
+rc MF vs NSGA-II:  +4.66% [-2.68,+9.55] med +7.04%  W/L 13/2 of 15  p=0.0054 holm=0.107
+rm MF vs NSGA-II:  +1.76% [+0.71,+3.13] med +0.68%  W/L 14/1 of 15  p=0.0054 holm=0.091
+rc MF vs SPEA2:  +4.82% [-2.53,+9.94] med +7.32%  W/L 14/1 of 15  p=0.0012 holm=0.029
+rm MF vs SPEA2:  +1.44% [+0.59,+2.42] med +0.66%  W/L 11/4 of 15  p=0.0554 holm=0.623
+rc MF vs MOEA/D:  +3.01% [-4.11,+7.43] med +5.76%  W/L 14/1 of 15  p=0.0009 holm=0.022
+rm MF vs MOEA/D:  +2.26% [+1.37,+3.35] med +2.12%  W/L 15/0 of 15  p=0.0001 holm=0.002
+rc LIWSA+ vs NSGA-II:  +3.75% [+1.30,+6.20] med +4.01%  W/L 13/2 of 15  p=0.0067 holm=0.114
+rm LIWSA+ vs NSGA-II:  -0.29% [-1.07,+0.29] med +0.14%  W/L 9/6 of 15  p=0.7197 holm=1.000
+rc LIWSA+ vs SPEA2:  +3.83% [+1.62,+5.92] med +4.12%  W/L 13/2 of 15  p=0.0054 holm=0.107
+rm LIWSA+ vs SPEA2:  -0.59% [-1.73,+0.26] med +0.03%  W/L 8/7 of 15  p=0.9341 holm=1.000
+rc MF + rich ridge vs LIWSA+:  +1.11% [-1.03,+3.36] med +1.76%  W/L 9/6 of 15  p=0.8040 holm=1.000
+rm MF + rich ridge vs LIWSA+:  +1.98% [+0.49,+4.11] med +0.40%  W/L 14/1 of 15  p=0.0001 holm=0.003
+rc MF + boosted trees vs LIWSA+:  +0.78% [-1.03,+2.79] med +0.70%  W/L 9/6 of 15  p=0.5995 holm=1.000
+rm MF + boosted trees vs LIWSA+:  +1.81% [+0.31,+3.92] med +0.24%  W/L 13/2 of 15  p=0.0084 holm=0.134
+rc MF + rich ridge + HVI vs LIWSA+:  +0.80% [-1.46,+2.82] med +2.00%  W/L 11/4 of 15  p=0.1876 holm=1.000
+rm MF + rich ridge + HVI vs LIWSA+:  +1.45% [+0.29,+3.07] med +0.14%  W/L 12/3 of 15  p=0.0479 holm=0.623
+rc MF + boosted trees + HVI vs LIWSA+:  +0.44% [-1.27,+2.15] med +0.77%  W/L 10/5 of 15  p=0.4543 holm=1.000
+rm MF + boosted trees + HVI vs LIWSA+:  +1.62% [+0.48,+3.26] med +0.48%  W/L 13/2 of 15  p=0.0015 holm=0.032
+rc MF + rich ridge vs MF:  +2.51% [-4.50,+14.34] med -1.69%  W/L 4/11 of 15  p=0.0151 holm=0.226
+rm MF + rich ridge vs MF:  -0.12% [-0.37,+0.09] med +0.07%  W/L 8/7 of 15  p=0.9780 holm=1.000
+rc MF + boosted trees vs MF:  +1.92% [-4.31,+12.40] med -2.80%  W/L 5/10 of 15  p=0.0479 holm=0.671
+rm MF + boosted trees vs MF:  -0.29% [-0.54,-0.09] med -0.32%  W/L 5/10 of 15  p=0.0479 holm=0.623
+rc MF + rich ridge + HVI vs MF:  +2.09% [-4.66,+13.41] med -2.10%  W/L 5/10 of 15  p=0.0637 holm=0.828
+rm MF + rich ridge + HVI vs MF:  -0.62% [-1.14,-0.15] med -0.39%  W/L 5/10 of 15  p=0.0946 holm=0.946
+rc MF + boosted trees + HVI vs MF:  +1.55% [-4.34,+11.75] med -1.90%  W/L 3/12 of 15  p=0.0034 holm=0.077
+rm MF + boosted trees + HVI vs MF:  -0.45% [-0.97,+0.01] med -0.09%  W/L 4/11 of 15  p=0.2078 holm=1.000
+rc MF + rich ridge vs MF + ridge:  -2.24% [-4.27,-0.31] med -2.12%  W/L 5/10 of 15  p=0.0730 holm=0.876
+rm MF + rich ridge vs MF + ridge:  +0.13% [-0.18,+0.44] med +0.07%  W/L 11/4 of 15  p=0.1876 holm=1.000
+rc MF + boosted trees vs MF + rich ridge:  -0.29% [-1.32,+0.71] med -0.29%  W/L 5/10 of 15  p=0.2769 holm=1.000
+rm MF + boosted trees vs MF + rich ridge:  -0.17% [-0.28,-0.06] med -0.17%  W/L 2/13 of 15  p=0.0009 holm=0.020
+rc MF + rich ridge vs NSGA-II:  +4.82% [+2.34,+7.30] med +5.55%  W/L 13/2 of 15  p=0.0043 holm=0.090
+rm MF + rich ridge vs NSGA-II:  +1.64% [+0.60,+3.01] med +0.79%  W/L 14/1 of 15  p=0.0004 holm=0.010
+rc MF + rich ridge vs SPEA2:  +4.92% [+2.39,+7.49] med +5.63%  W/L 12/3 of 15  p=0.1876 holm=1.000
+rm MF + rich ridge vs SPEA2:  +1.31% [+0.48,+2.32] med +0.74%  W/L 12/3 of 15  p=0.0181 holm=0.253
+rc MF + rich ridge vs MOEA/D:  +3.05% [+0.70,+5.62] med +2.03%  W/L 10/5 of 15  p=0.4543 holm=1.000
+rm MF + rich ridge vs MOEA/D:  +2.14% [+1.24,+3.23] med +1.58%  W/L 15/0 of 15  p=0.0001 holm=0.002
+rc MF + rich ridge + HVI vs NSGA-II:  +4.49% [+2.18,+7.00] med +4.10%  W/L 12/3 of 15  p=0.0125 holm=0.199
+rm MF + rich ridge + HVI vs NSGA-II:  +1.12% [+0.45,+1.99] med +0.40%  W/L 14/1 of 15  p=0.0084 holm=0.134
+
+== EXPENSIVE-OBJECTIVE STUDY (five 1000-task workflows); out-of-sample hypervolume gain (%)
+rc MF vs LIWSA+:  +3.35% [+1.76,+5.10] med +2.19%  W/L 5/0 of 5  p=0.0625 holm=1.000
+rm MF vs LIWSA+:  +1.45% [+0.04,+3.92] med +0.20%  W/L 4/1 of 5  p=0.1875 holm=1.000
+rc random pre-selection vs LIWSA+:  +0.47% [-0.86,+1.97] med -0.24%  W/L 2/3 of 5  p=0.6250 holm=1.000
+rm random pre-selection vs LIWSA+:  -0.21% [-0.54,+0.00] med -0.08%  W/L 1/4 of 5  p=0.4375 holm=1.000
+rc MF + ridge vs LIWSA+:  +2.43% [+1.44,+3.39] med +2.63%  W/L 5/0 of 5  p=0.0625 holm=1.000
+rm MF + ridge vs LIWSA+:  +1.20% [+0.14,+2.86] med +0.47%  W/L 5/0 of 5  p=0.0625 holm=1.000
+rc MF + ridge + HVI vs LIWSA+:  +3.10% [+1.41,+4.79] med +2.90%  W/L 5/0 of 5  p=0.0625 holm=1.000
+rm MF + ridge + HVI vs LIWSA+:  +1.44% [+0.25,+3.26] med +0.74%  W/L 5/0 of 5  p=0.0625 holm=1.000
+rc OLS immigrants vs LIWSA+:  +0.43% [-0.61,+1.32] med +0.85%  W/L 3/2 of 5  p=1.0000 holm=1.000
+rm OLS immigrants vs LIWSA+:  +0.09% [-0.03,+0.29] med +0.00%  W/L 3/2 of 5  p=0.8125 holm=1.000
+rc MF vs random pre-selection:  +2.88% [+1.28,+4.49] med +3.00%  W/L 5/0 of 5  p=0.0625 holm=1.000
+rm MF vs random pre-selection:  +1.67% [+0.05,+4.49] med +0.35%  W/L 4/1 of 5  p=0.3125 holm=1.000
+rc MF vs MF + ridge:  +0.90% [+0.09,+1.82] med +0.59%  W/L 4/1 of 5  p=0.1250 holm=1.000
+rm MF vs MF + ridge:  +0.23% [-0.45,+1.06] med -0.04%  W/L 2/3 of 5  p=0.6250 holm=1.000
+rc MF vs MF + ridge + HVI:  +0.25% [-0.42,+1.02] med -0.21%  W/L 2/3 of 5  p=0.8125 holm=1.000
+rm MF vs MF + ridge + HVI:  -0.01% [-0.62,+0.69] med -0.07%  W/L 1/4 of 5  p=0.3125 holm=1.000
+rc MF vs NSGA-II:  +8.79% [+5.99,+12.13] med +7.04%  W/L 5/0 of 5  p=0.0625 holm=1.000
+rm MF vs NSGA-II:  +1.50% [+0.08,+3.82] med +0.54%  W/L 4/1 of 5  p=0.4375 holm=1.000
+rc MF vs SPEA2:  +7.43% [+4.63,+11.09] med +7.12%  W/L 5/0 of 5  p=0.0625 holm=1.000
+rm MF vs SPEA2:  +1.14% [-0.07,+3.06] med +0.22%  W/L 3/2 of 5  p=0.6250 holm=1.000
+rc MF vs MOEA/D:  +5.47% [+3.66,+7.23] med +5.76%  W/L 5/0 of 5  p=0.0625 holm=1.000
+rm MF vs MOEA/D:  +1.27% [+0.21,+2.73] med +1.01%  W/L 5/0 of 5  p=0.0625 holm=1.000
+rc LIWSA+ vs NSGA-II:  +5.27% [+2.39,+8.15] med +5.74%  W/L 5/0 of 5  p=0.0625 holm=1.000
+rm LIWSA+ vs NSGA-II:  +0.06% [-0.11,+0.23] med +0.04%  W/L 3/2 of 5  p=0.8125 holm=1.000
+rc LIWSA+ vs SPEA2:  +3.94% [+1.66,+6.65] med +2.75%  W/L 5/0 of 5  p=0.0625 holm=1.000
+rm LIWSA+ vs SPEA2:  -0.28% [-0.84,+0.10] med -0.11%  W/L 2/3 of 5  p=1.0000 holm=1.000
+rc MF + rich ridge vs LIWSA+:  -1.31% [-4.37,+1.96] med -1.36%  W/L 2/3 of 5  p=0.6250 holm=1.000
+rm MF + rich ridge vs LIWSA+:  +1.36% [+0.15,+3.67] med +0.29%  W/L 5/0 of 5  p=0.0625 holm=1.000
+rc MF + boosted trees vs LIWSA+:  -0.83% [-3.84,+2.06] med +0.00%  W/L 3/2 of 5  p=1.0000 holm=1.000
+rm MF + boosted trees vs LIWSA+:  +1.27% [+0.04,+3.62] med +0.13%  W/L 4/1 of 5  p=0.3125 holm=1.000
+rc MF + rich ridge + HVI vs LIWSA+:  -1.78% [-6.13,+2.58] med +0.04%  W/L 3/2 of 5  p=1.0000 holm=1.000
+rm MF + rich ridge + HVI vs LIWSA+:  +0.83% [-0.19,+2.54] med +0.14%  W/L 4/1 of 5  p=0.6250 holm=1.000
+rc MF + boosted trees + HVI vs LIWSA+:  -0.53% [-4.20,+3.15] med +0.24%  W/L 3/2 of 5  p=1.0000 holm=1.000
+rm MF + boosted trees + HVI vs LIWSA+:  +1.22% [+0.10,+2.88] med +0.48%  W/L 4/1 of 5  p=0.1250 holm=1.000
+rc MF + rich ridge vs MF:  -4.53% [-6.71,-2.35] med -5.59%  W/L 0/5 of 5  p=0.0625 holm=1.000
+rm MF + rich ridge vs MF:  -0.08% [-0.30,+0.13] med +0.10%  W/L 3/2 of 5  p=0.6250 holm=1.000
+rc MF + boosted trees vs MF:  -4.07% [-6.11,-2.57] med -2.98%  W/L 0/5 of 5  p=0.0625 holm=1.000
+rm MF + boosted trees vs MF:  -0.17% [-0.36,+0.01] med -0.07%  W/L 1/4 of 5  p=0.1250 holm=1.000
+rc MF + rich ridge + HVI vs MF:  -5.01% [-7.90,-2.12] med -2.75%  W/L 0/5 of 5  p=0.0625 holm=1.000
+rm MF + rich ridge + HVI vs MF:  -0.58% [-1.30,-0.01] med -0.53%  W/L 2/3 of 5  p=0.6250 holm=1.000
+rc MF + boosted trees + HVI vs MF:  -3.79% [-6.25,-1.71] med -1.90%  W/L 0/5 of 5  p=0.0625 holm=1.000
+rm MF + boosted trees + HVI vs MF:  -0.21% [-1.06,+0.53] med -0.05%  W/L 2/3 of 5  p=0.8125 holm=1.000
+rc MF + rich ridge vs MF + ridge:  -3.67% [-5.93,-0.84] med -4.77%  W/L 1/4 of 5  p=0.3125 holm=1.000
+rm MF + rich ridge vs MF + ridge:  +0.15% [-0.40,+0.88] med +0.05%  W/L 3/2 of 5  p=1.0000 holm=1.000
+rc MF + boosted trees vs MF + rich ridge:  +0.51% [-0.88,+2.12] med -0.29%  W/L 2/3 of 5  p=0.6250 holm=1.000
+rm MF + boosted trees vs MF + rich ridge:  -0.09% [-0.16,-0.02] med -0.05%  W/L 0/5 of 5  p=0.0625 holm=1.000
+rc MF + rich ridge vs NSGA-II:  +3.80% [+1.58,+6.23] med +2.66%  W/L 5/0 of 5  p=0.0625 holm=1.000
+rm MF + rich ridge vs NSGA-II:  +1.42% [+0.17,+3.60] med +0.49%  W/L 5/0 of 5  p=0.0625 holm=1.000
+rc MF + rich ridge vs SPEA2:  +2.53% [-0.66,+5.72] med +2.25%  W/L 3/2 of 5  p=1.0000 holm=1.000
+rm MF + rich ridge vs SPEA2:  +1.06% [+0.05,+2.80] med +0.35%  W/L 3/2 of 5  p=0.3125 holm=1.000
+rc MF + rich ridge vs MOEA/D:  +0.69% [-1.67,+4.12] med -0.59%  W/L 2/3 of 5  p=0.6250 holm=1.000
+rm MF + rich ridge vs MOEA/D:  +1.19% [+0.24,+2.56] med +0.67%  W/L 5/0 of 5  p=0.0625 holm=1.000
+rc MF + rich ridge + HVI vs NSGA-II:  +3.36% [-0.98,+8.46] med +2.23%  W/L 4/1 of 5  p=0.3125 holm=1.000
+rm MF + rich ridge + HVI vs NSGA-II:  +0.89% [+0.01,+2.44] med +0.14%  W/L 4/1 of 5  p=0.6250 holm=1.000
+
+== EXPENSIVE-OBJECTIVE STUDY: mean search time (ms), small / 1000-task; expensive evaluations
+rc NSGA-II: 187 / 2959; evaluations 610
+rm NSGA-II: 118 / 1995; evaluations 610
+rc SPEA2: 189 / 2924; evaluations 610
+rm SPEA2: 121 / 1959; evaluations 610
+rc MOEA/D: 179 / 2934; evaluations 610
+rm MOEA/D: 116 / 1907; evaluations 610
+rc LIWSA+: 185 / 2898; evaluations 610
+rm LIWSA+: 119 / 1917; evaluations 610
+rc random pre-selection: 195 / 3020; evaluations 610
+rm random pre-selection: 127 / 1988; evaluations 610
+rc MF: 223 / 3461; evaluations 610
+rm MF: 159 / 2455; evaluations 610
+rc MF + ridge: 227 / 3456; evaluations 610
+rm MF + ridge: 159 / 2434; evaluations 610
+rc MF + ridge + HVI: 470 / 3861; evaluations 610
+rm MF + ridge + HVI: 483 / 2978; evaluations 610
+rc OLS immigrants: 185 / 2912; evaluations 610
+rm OLS immigrants: 118 / 1916; evaluations 610
+rc MF + rich ridge: 241 / 3491; evaluations 610
+rm MF + rich ridge: 168 / 2420; evaluations 610
+rc MF + boosted trees: 530 / 3777; evaluations 610
+rm MF + boosted trees: 455 / 2767; evaluations 610
+rc MF + rich ridge + HVI: 497 / 3934; evaluations 610
+rm MF + rich ridge + HVI: 520 / 3147; evaluations 610
+rc MF + boosted trees + HVI: 808 / 4385; evaluations 610
+rm MF + boosted trees + HVI: 843 / 3512; evaluations 610
+
+== EQUAL WALL-CLOCK CONTROL (risk-aware, 15 small workflows)
+LIWSAP.f.r-plus: evals 610 time 185 ms
+LIWSAP.f.r-plus@23gens: evals 697 time 220 ms
+LIWSAP.f.r.san-plus: evals 610 time 223 ms
+MF vs LIWSA+ with 23 generations:  +3.81% [-3.40,+8.63] med +7.16%  W/L 13/2 of 15  p=0.0015
+LIWSA+ 23 vs 20 generations:  -0.77% [-2.34,+0.60] med -0.71%  W/L 6/9 of 15  p=0.2293
+Holm over the two equal wall-clock tests: ['0.003', '0.229']
+
+== DEVELOPMENT vs HELD-OUT (MF vs LIWSA+, out-of-sample hypervolume gain %)
+rc five development workflows:  +6.08% [+2.97,+9.09] med +6.31%  W/L 5/0 of 5  p=0.0625
+rc 15 held-out workflows:  +0.97% [-5.73,+5.13] med +2.56%  W/L 13/2 of 15  p=0.0054
+rm five development workflows:  +2.26% [+0.41,+5.37] med +0.81%  W/L 5/0 of 5  p=0.0625
+rm 15 held-out workflows:  +2.11% [+0.61,+4.24] med +0.51%  W/L 14/1 of 15  p=0.0034
+
+== WORST CASE ACROSS WORKFLOWS: out-of-sample hypervolume as % of the best algorithm on that workflow
+rc NSGA-II: min 84.2 (Epigenomics_24), mean 92.2 | SPEA2: min 85.7 (Inspiral_100), mean 91.8 | MOEA/D: min 86.7 (Sipht_60), mean 92.9 | LIWSA+: min 85.0 (Sipht_60), mean 94.3 | random pre-selection: min 84.1 (Sipht_60), mean 94.6 | MF: min 55.3 (Sipht_30), mean 96.3 | MF + ridge: min 82.0 (Sipht_60), mean 97.5 | MF + ridge + HVI: min 91.5 (Montage_25), mean 98.0 | OLS immigrants: min 86.2 (Sipht_60), mean 94.8 | MF + rich ridge: min 84.1 (Sipht_60), mean 95.5 | MF + boosted trees: min 86.1 (Sipht_60), mean 95.4 | MF + rich ridge + HVI: min 89.3 (Sipht_60), mean 95.4 | MF + boosted trees + HVI: min 85.3 (Sipht_60), mean 95.3
+rc workflows where MF is below LIWSA+: Sipht_30 -41.95%, Epigenomics_24 -1.08%
+rc mean MF gain over LIWSA+ excluding Sipht_30: +4.57% (all 20: +2.25%)
+rm NSGA-II: min 91.6 (CyberShake_100), mean 98.0 | SPEA2: min 94.0 (CyberShake_100), mean 98.2 | MOEA/D: min 92.5 (CyberShake_100), mean 97.5 | LIWSA+: min 87.1 (CyberShake_100), mean 97.7 | random pre-selection: min 88.7 (CyberShake_50), mean 97.8 | MF: min 98.4 (Montage_50), mean 99.7 | MF + ridge: min 98.2 (CyberShake_1000), mean 99.6 | MF + ridge + HVI: min 96.9 (Sipht_60), mean 99.3 | OLS immigrants: min 86.8 (CyberShake_100), mean 97.7 | MF + rich ridge: min 97.3 (Sipht_60), mean 99.5 | MF + boosted trees: min 97.6 (Montage_50), mean 99.4 | MF + rich ridge + HVI: min 96.8 (Sipht_60), mean 99.0 | MF + boosted trees + HVI: min 97.1 (CyberShake_100), mean 99.2
+rm workflows where MF is below LIWSA+: Inspiral_1000 -0.02%
+rm mean MF gain over LIWSA+ excluding Sipht_30: +2.26% (all 20: +2.15%)
+rc mean MF + ridge vs MF excluding Sipht_30: -0.94%
+
+== SIPHT_30 risk-aware, per seed: out-of-sample hypervolume (archive) as % of the best condition on that seed
+seed 1: NSGA-II 78.1, SPEA2 86.6, MOEA/D 83.7, LIWSA+ 75.1, random pre-selection 94.4, MF 57.5, MF + ridge 92.1, MF + ridge + HVI 84.6, OLS immigrants 82.9, MF + rich ridge 100.0, MF + boosted trees 96.3, MF + rich ridge + HVI 94.6, MF + boosted trees + HVI 94.3
+seed 2: NSGA-II 79.4, SPEA2 77.9, MOEA/D 64.1, LIWSA+ 97.1, random pre-selection 99.7, MF 49.4, MF + ridge 96.8, MF + ridge + HVI 100.0, OLS immigrants 97.1, MF + rich ridge 96.9, MF + boosted trees 97.0, MF + rich ridge + HVI 95.4, MF + boosted trees + HVI 79.0
+seed 3: NSGA-II 95.2, SPEA2 86.7, MOEA/D 100.0, LIWSA+ 89.6, random pre-selection 80.4, MF 45.3, MF + ridge 83.9, MF + ridge + HVI 67.8, OLS immigrants 89.6, MF + rich ridge 85.7, MF + boosted trees 74.1, MF + rich ridge + HVI 75.1, MF + boosted trees + HVI 80.7
+seed 4: NSGA-II 66.1, SPEA2 75.9, MOEA/D 100.0, LIWSA+ 78.7, random pre-selection 92.2, MF 45.2, MF + ridge 79.2, MF + ridge + HVI 77.0, OLS immigrants 79.2, MF + rich ridge 78.4, MF + boosted trees 79.5, MF + rich ridge + HVI 80.0, MF + boosted trees + HVI 79.9
+seed 5: NSGA-II 91.4, SPEA2 89.1, MOEA/D 89.5, LIWSA+ 91.3, random pre-selection 88.6, MF 56.0, MF + ridge 90.6, MF + ridge + HVI 97.7, OLS immigrants 89.8, MF + rich ridge 93.6, MF + boosted trees 83.9, MF + rich ridge + HVI 100.0, MF + boosted trees + HVI 93.6
+
+== SEEDED START: share of the final population hypervolume already held at generation 0 (LIWSA+, nominal objective, original prices)
+small: 94.3% (mean over 15 workflows)
+large: 96.4% (mean over 5 workflows)
+
+== SURROGATE RANKING QUALITY (candidate children, 15 small workflows x 2 seeds)
+rc [0.842, 0.866, 0.866, 0.901, 0.323, 0.294]
+rm [0.966, 0.959, 0.929, 0.961, 0.467, 0.431]
+
+== RANKING QUALITY PER WORKFLOW (2 seeds): rho makespan nominal/corrected | rho cost nominal/corrected | overlap nominal/corrected
+rc Montage_25: 0.720/0.793 | 0.935/0.912 | 0.295/0.303
+rc Montage_50: 0.980/0.972 | 0.910/0.994 | 0.396/0.364
+rc Montage_100: 0.778/0.909 | 0.988/0.977 | 0.204/0.207
+rc CyberShake_30: 0.967/0.975 | 0.990/0.982 | 0.332/0.348
+rc CyberShake_50: 0.963/0.959 | 0.992/0.990 | 0.431/0.388
+rc CyberShake_100: 0.960/0.970 | 0.996/0.995 | 0.478/0.488
+rc Sipht_30: 0.396/0.490 | 0.199/0.424 | 0.357/0.191
+rc Sipht_60: 0.930/0.874 | 0.517/0.812 | 0.260/0.253
+rc Sipht_100: 0.940/0.900 | 0.910/0.940 | 0.305/0.247
+rc Epigenomics_24: 0.856/0.900 | 0.893/0.811 | 0.343/0.251
+rc Epigenomics_46: 0.749/0.619 | 0.873/0.818 | 0.287/0.209
+rc Epigenomics_100: 0.766/0.873 | 0.977/0.959 | 0.284/0.262
+rc Inspiral_30: 0.900/0.918 | 0.957/0.945 | 0.366/0.324
+rc Inspiral_50: 0.968/0.961 | 0.870/0.982 | 0.334/0.334
+rc Inspiral_100: 0.759/0.881 | 0.981/0.979 | 0.178/0.234
+rm Montage_25: 0.992/0.994 | 0.937/0.984 | 0.459/0.528
+rm Montage_50: 0.955/0.961 | 0.995/0.995 | 0.466/0.452
+rm Montage_100: 0.997/0.997 | 0.940/0.998 | 0.474/0.584
+rm CyberShake_30: 0.992/0.994 | 0.998/0.995 | 0.512/0.501
+rm CyberShake_50: 0.990/0.994 | 0.999/0.997 | 0.583/0.559
+rm CyberShake_100: 0.984/0.992 | 0.998/0.997 | 0.636/0.641
+rm Sipht_30: 0.984/0.955 | 0.778/0.944 | 0.372/0.309
+rm Sipht_60: 0.827/0.739 | 0.530/0.606 | 0.381/0.229
+rm Sipht_100: 0.869/0.909 | 0.981/0.977 | 0.337/0.335
+rm Epigenomics_24: 0.991/0.970 | 0.973/0.978 | 0.552/0.322
+rm Epigenomics_46: 0.988/0.979 | 0.972/0.986 | 0.453/0.345
+rm Epigenomics_100: 0.995/0.993 | 0.957/0.993 | 0.492/0.428
+rm Inspiral_30: 0.959/0.944 | 0.979/0.977 | 0.384/0.384
+rm Inspiral_50: 0.972/0.965 | 0.993/0.991 | 0.457/0.379
+rm Inspiral_100: 0.996/0.996 | 0.914/0.995 | 0.449/0.471
+
+== ROBUSTNESS: mean hypervolume over scenarios (relative to LIWSA+ in the same setting), and degradation from nominal
+nominal {'NSGA-II': np.float64(-0.22), 'SPEA2': np.float64(-0.31), 'MOEA/D': np.float64(-0.18), 'LIWSA (original moves)': np.float64(-1.24), 'LIWSA+': np.float64(0.0), 'HEFT': np.float64(-35.01), 'Min-Min': np.float64(-51.76)}
+len10 {'NSGA-II': np.float64(-0.17), 'SPEA2': np.float64(-0.26), 'MOEA/D': np.float64(-0.1), 'LIWSA (original moves)': np.float64(-1.13), 'LIWSA+': np.float64(0.0), 'HEFT': np.float64(-32.64), 'Min-Min': np.float64(-47.5)}
+len25 {'NSGA-II': np.float64(-0.12), 'SPEA2': np.float64(-0.21), 'MOEA/D': np.float64(-0.05), 'LIWSA (original moves)': np.float64(-0.98), 'LIWSA+': np.float64(0.0), 'HEFT': np.float64(-29.55), 'Min-Min': np.float64(-41.85)}
+mips {'NSGA-II': np.float64(-0.62), 'SPEA2': np.float64(-0.88), 'MOEA/D': np.float64(-1.85), 'LIWSA (original moves)': np.float64(-2.38), 'LIWSA+': np.float64(0.0), 'HEFT': np.float64(-33.04), 'Min-Min': np.float64(-45.99)}
+both {'NSGA-II': np.float64(-0.7), 'SPEA2': np.float64(-0.85), 'MOEA/D': np.float64(-1.51), 'LIWSA (original moves)': np.float64(-2.05), 'LIWSA+': np.float64(0.0), 'HEFT': np.float64(-30.41), 'Min-Min': np.float64(-42.16)}
+robust LIWSA+ vs NSGA-II [nominal]: mean +0.24% W/L 19/1 p=0.0002
+robust LIWSA+ vs NSGA-II [len25]: mean +0.13% W/L 14/6 p=0.2024
+robust LIWSA+ vs NSGA-II [mips]: mean +0.64% W/L 18/2 p=0.0001
+robust LIWSA+ vs NSGA-II [both]: mean +0.72% W/L 18/2 p=0.0001
+
+== SIMULATOR REPLAY
+simulator-replayed fronts: 225 runs, 15 instances, conditions ['LIWSA.f-plus', 'LIWSAP.f-plus', 'MOEAD.f-plus', 'NSGA2.f-plus', 'SPEA2.f-plus']
+
+Simulator-measured hypervolume, paired over instances (A vs B)
+   LIWSAP.f-plus vs LIWSA.f-plus    +1.84% [+0.72,+3.05] med +0.68%  W/L 11/4 of 15  p=0.1354
+   LIWSAP.f-plus vs MOEAD.f-plus    -0.47% [-1.15,+0.16] med -0.01%  W/L 6/9 of 15  p=0.2293
+   LIWSAP.f-plus vs NSGA2.f-plus    -0.05% [-0.54,+0.38] med +0.08%  W/L 9/6 of 15  p=0.9780
+   LIWSAP.f-plus vs SPEA2.f-plus    +0.36% [-0.16,+0.95] med +0.13%  W/L 9/6 of 15  p=0.8469
+
+Planning-level (decoder) HV of the SAME replayed points, for reference
+   LIWSAP.f-plus vs NSGA2.f-plus    -0.06% [-0.55,+0.37] med +0.08%  W/L 9/6 of 15  p=0.9780
+
+median |simulator - decoder| / decoder: makespan 0.00%, cost 0.00% (n=1104 replayed schedules)
+

@@ -1,0 +1,42 @@
+== RANKING QUALITY (mean over workflows; model vs nominal), risk-aware setting, 2 seeds
+ridge on 10 descriptors: rho makespan nominal 0.820 -> model 0.821 | rho cost 0.774 -> 0.843 | overlap 0.338 -> 0.287 (chance 0.20)
+ridge on rich features: rho makespan nominal 0.838 -> model 0.954 | rho cost 0.802 -> 0.972 | overlap 0.338 -> 0.442 (chance 0.20)
+boosted trees on rich features: rho makespan nominal 0.827 -> model 0.943 | rho cost 0.812 -> 0.966 | overlap 0.343 -> 0.423 (chance 0.20)
+
+== CANDIDATE-POOL SIZE K (rc), development workflows: mean gain over LIWSA+ (%) and mean search time (ms)
+K=5: nominal +7.40% (158 ms) | rich ridge +1.96% (196 ms) | boosted +3.14% (422 ms)
+K=10: nominal +10.47% (303 ms) | rich ridge +4.90% (308 ms) | boosted +4.53% (602 ms)
+K=20: nominal +8.03% (459 ms) | rich ridge +2.97% (457 ms) | boosted +1.45% (752 ms)
+
+== CANDIDATE-POOL SIZE K (rm), development workflows: mean gain over LIWSA+ (%) and mean search time (ms)
+K=5: nominal +2.28% (141 ms) | rich ridge +1.76% (155 ms) | boosted +1.81% (435 ms)
+K=10: nominal +2.54% (258 ms) | rich ridge +2.08% (266 ms) | boosted +2.31% (574 ms)
+K=20: nominal +2.70% (470 ms) | rich ridge +2.34% (465 ms) | boosted +2.65% (859 ms)
+
+== HARSHER TAIL RISK (CVaR 0.9, 40% stragglers), development workflows: gain over LIWSA+ | vs nominal pre-screening
+  NSGA-II      -0.06% |  -4.79%
+  nominal      +5.08% |  +0.00%
+  ridge10      +4.29% |  -0.71%
+  rich ridge   +3.13% |  -1.81%
+  boosted      +2.80% |  -2.15%
+  ranking sao: rho makespan 0.903 -> 0.896, overlap 0.381 -> 0.379
+  ranking sal: rho makespan 0.933 -> 0.965, overlap 0.382 -> 0.462
+  ranking sag: rho makespan 0.916 -> 0.954, overlap 0.382 -> 0.467
+
+== HEDGED SELECTION (rc), development workflows: gain over LIWSA+ | vs nominal pre-screening | mean search time (ms)
+  nominal               +6.82% |  +0.00% | 158
+  ridge10               +3.75% |  -2.85% | 172
+  ridge10 + hedge       +4.35% |  -2.27% | 262
+  rich ridge            +1.86% |  -4.65% | 196
+  rich ridge + hedge    +3.74% |  -2.88% | 261
+  boosted               +2.68% |  -3.89% | 422
+  boosted + hedge       +4.49% |  -2.15% | 523
+
+== HEDGED SELECTION (rm), development workflows: gain over LIWSA+ | vs nominal pre-screening | mean search time (ms)
+  nominal               +2.26% |  +0.00% | 141
+  ridge10               +2.37% |  +0.10% | 135
+  ridge10 + hedge       +2.18% |  -0.07% | 203
+  rich ridge            +1.74% |  -0.51% | 155
+  rich ridge + hedge    +2.12% |  -0.13% | 200
+  boosted               +1.79% |  -0.47% | 435
+  boosted + hedge       +2.21% |  -0.05% | 500

@@ -1,0 +1,39 @@
+== FIDELITY (vs full WorkflowSim), n = 20
+Analytic gap-filling decoder: makespan mean 29.111% median 19.708% max 65.70%; cost mean 26.454% max 57.93%
+Simulator-faithful decoder: makespan mean 0.022% median 0.000% max 0.21%; cost mean 0.034% max 0.15%
+
+== MAIN COMPARISON, original pricing, runs=8
+hv_arc     LIWSA+ vs NSGA-II                n/a holm=1.000
+hv_arc     LIWSA+ vs SPEA2                  n/a holm=1.000
+hv_arc     LIWSA+ vs MOEA/D                 n/a holm=1.000
+hv_arc     LIWSA+ vs LIWSA (original moves) n/a holm=1.000
+hv_arc      SPEA2 vs NSGA-II                n/a holm=1.000
+hv_pop     LIWSA+ vs NSGA-II                n/a holm=1.000
+hv_pop     LIWSA+ vs SPEA2                  n/a holm=1.000
+hv_pop     LIWSA+ vs MOEA/D                 n/a holm=1.000
+hv_pop     LIWSA+ vs LIWSA (original moves) n/a holm=1.000
+hv_pop      SPEA2 vs NSGA-II                n/a holm=1.000
+LIWSA+ vs heft: mean +87.8% median +87.8%
+LIWSA+ vs minmin: mean +128.8% median +128.8%
+
+== ABLATION (original pricing), A vs B = effect of component/seeds
+hv_arc LIWSA+ vs LIWSA+ without guided moves: n/a holm=1.000
+hv_arc LIWSA+ vs LIWSA+ without estimate move: n/a holm=1.000
+hv_arc LIWSA+ vs LIWSA+ without locust moves: n/a holm=1.000
+hv_arc LIWSA+ vs LIWSA+ without online operator learning: n/a holm=1.000
+hv_arc NSGA-II vs NSGA-II (HEFT/Min-Min seeds only): n/a holm=1.000
+hv_arc LIWSA (original moves) vs LIWSA (HEFT/Min-Min seeds only): n/a holm=1.000
+
+== PER FAMILY, LIWSA+ vs NSGA-II (archive front, original pricing)
+Montage: mean +0.03% per workflow [0.03]
+CyberShake: mean +1.01% per workflow [1.01]
+Sipht: mean +nan% per workflow []
+Epigenomics: mean +nan% per workflow []
+Inspiral: mean +nan% per workflow []
+
+== PER-WORKFLOW METRIC TABLES written (makespan, cost, hypervolume, distinct points, time)
+
+== SENSITIVITY of LIWSA+ (archive HV vs default, all 20 workflows, 5 seeds)
+pop20: n/a holm=1.000
+
+== ROBUSTNESS: mean hypervolume over scenarios (relative to LIWSA+ in the same setting), and degradation from nominal

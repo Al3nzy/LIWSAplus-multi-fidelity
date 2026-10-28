@@ -1,0 +1,25 @@
+#!/bin/bash
+# Entry point (Code Ocean or a plain shell): runs every experiment, recomputes every statistic, table and figure, and copies the results.
+#
+#   Java   : fidelity of the decoders, nominal-objective study, parameter sensitivity, robustness, replay in WorkflowSim,
+#            expensive-objective (multi-fidelity) study, checks on the learned surrogates
+#   Python : paper_statistics.py (all numbers and LaTeX tables), make_paper_figures.py (all figures)
+#
+# QUICK=1 runs a two-workflow smoke test of the whole chain (about 1 minute).
+# Full run on one core: roughly 1.5 hours (the steps are resumable; finished work is skipped).
+set -ex
+cd "$(dirname "$0")"
+RESULTS="../results"
+mkdir -p "$RESULTS"
+if [ "${QUICK:-0}" = "1" ]; then Q="--quick"; W="experiments/work_quick"; else Q=""; W="experiments/work"; fi
+STEP="python3 experiments/run_experiments.py"
+
+$STEP compile $Q
+$STEP seeds $Q
+for s in fidelity faithful sensitivity robustness multifidelity simcheck mlchecks; do
+  $STEP $s $Q || echo "WARNING: step $s failed"
+  mkdir -p "$RESULTS/results" && cp -r "$W/results/." "$RESULTS/results/" || true     # copy after every step so results survive a later failure
+done
+$STEP figures $Q || echo "WARNING: figures failed"
+cp -r "$W/analysis" "$RESULTS"/ || true
+echo "Done. Results copied to $RESULTS"
