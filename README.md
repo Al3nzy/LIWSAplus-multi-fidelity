@@ -4,8 +4,7 @@
 
 ### Multi-fidelity, risk-aware scheduling for scientific workflows
 
-Reproducible algorithms, WorkflowSim experiments, and analysis tools for studying
-the trade-offs between workflow makespan, execution cost, and scheduling risk.
+
 
 **Dr. Mohammed Alaa Ala'anzy**  
 SDU University, Kaskelen, Kazakhstan  
@@ -24,8 +23,8 @@ SDU University, Kaskelen, Kazakhstan
 ## 🔭 At a glance
 
 LIWSA-MF2 is a research codebase for evaluating workflow schedulers under
-multi-objective and risk-aware settings. It includes the original LIWSA method,
-the guided **LIWSA+** search, simulator-faithful scheduling, competing
+multi-objective and risk-aware settings. It includes the LIWSA method,
+the guided **LIWSA+** search (The novelty), simulator-faithful scheduling, competing
 multi-objective algorithms, benchmark workflows, and scripts to regenerate
 reports, tables, and plots.
 
@@ -239,7 +238,6 @@ sources/                          Reduced simulator sources and scheduling code
 RESULTS/                          Collected figures, reports, and LaTeX tables
 run_all.py                        Cross-platform pipeline entry point
 run_all.bat                       Windows pipeline shortcut
-MANIFEST.txt                      File checksums
 ```
 
 To verify a copy against the included manifest, run:
