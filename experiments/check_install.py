@@ -5,7 +5,7 @@
 import hashlib, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
-SKIP = ('experiments/work', 'experiments/work_quick', '__pycache__', 'MANIFEST.txt', 'RESULTS/')
+SKIP = ('experiments/work', 'experiments/work_quick', '__pycache__', 'MANIFEST.txt', 'RESULTS/', 'paper/')
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 manifest = {}
 for line in (ROOT / 'MANIFEST.txt').read_text().splitlines():

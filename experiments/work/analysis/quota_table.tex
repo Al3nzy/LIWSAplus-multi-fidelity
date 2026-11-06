@@ -1,0 +1,20 @@
+\begin{table}[h]
+    \caption{Quota variant (a fifth of the kept children drawn at random from the screened pool): hypervolume gain (\%), fifteen smaller workflows, five seeds; unadjusted $p$}
+    \label{tab:quota}
+    \centering\scriptsize
+    \setlength{\tabcolsep}{2.5pt}
+    \begin{tabular}{@{}llccccc@{}}
+    \toprule
+    Objective & Comparison & Mean (W/L) & Median & Held-out 10 & Sipht\_30 & $p$ \\
+    \midrule
+    Risk-aware & MF over LIWSA+ & +3.07 (14/1) & +6.84 & +0.88 & -41.95 & 0.002 \\
+ & Quota over LIWSA+ & +4.93 (13/2) & +5.16 & +5.32 & -2.09 & 0.003 \\
+ & Quota over MF & +3.89 (6/9) & -0.40 & +7.34 & +68.64 & 0.359 \\
+\addlinespace
+Expected value & MF over LIWSA+ & +2.51 (15/0) & +0.87 & +2.63 & +0.02 & $<$0.001 \\
+ & Quota over LIWSA+ & +2.65 (14/1) & +0.93 & +2.59 & -0.24 & $<$0.001 \\
+ & Quota over MF & +0.14 (9/6) & +0.05 & -0.04 & -0.26 & 0.561 \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+    

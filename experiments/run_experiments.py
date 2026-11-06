@@ -15,6 +15,8 @@ Steps (each can be run alone and is resumable; finished work is skipped):
                    ranking diagnostics, equal wall-clock control
     simcheck       replay archive-front solutions inside WorkflowSim and compare simulator-measured hypervolume
     mlchecks       checks on the learned surrogates: ranking quality, candidate-pool size, harsher tail risk, hedged selection
+    scenarioreplay risk-aware schedules replayed in WorkflowSim under perturbed task lengths and VM speeds
+    newchecks      screening-model ablation (faithful / idealised / random), replications with new scenario sets, quota fallback
     figures        statistics, LaTeX tables and figures (paper_statistics.py, make_paper_figures.py, sim_report.py)
     paper          all of the above in this order
 """
@@ -144,6 +146,38 @@ def do_mlchecks(a):
     ml_checks.analyse(a.quick)
 
 
+def replay(out, instances, seeds, conds, jvm=(), T=3, R=10):
+    java_main('org.workflowsim.examples.experiments.ScenarioReplay', [out, instances, seeds, ','.join(conds), T, R, SEEDS], jvm)
+
+
+def do_scenarioreplay(a):
+    """Risk-aware validation: archive solutions replayed in WorkflowSim under perturbed task lengths and VM speeds."""
+    C = ['NSGA2.f.r-plus', 'LIWSAP.f.r-plus', 'LIWSAP.f.r.san-plus']
+    if a.quick:
+        replay(RESULTS / 'scenreplay_rc_small.csv', 'Montage_25', 1, C, SA_SETTINGS['rc'], 2, 3)
+        return
+    for st, jvm in SA_SETTINGS.items():
+        replay(RESULTS / f'scenreplay_{st}_small.csv', 'SMALL', 3, C, jvm)
+        replay(RESULTS / f'scenreplay_{st}_large.csv', 'LARGE', 1, C, jvm, 2, 5)
+
+
+def do_newchecks(a):
+    """Controls added in the revision: idealised screening, replications with independent scenario sets, quota fallback."""
+    if a.quick:
+        runner(RESULTS / 'ideal_rc_small.jsonl', 'Montage_25,CyberShake_30', 2,
+               ['LIWSAP.f.r-plus', 'LIWSAP.f.r.san-plus', 'LIWSAP.f.r.sai-plus', 'LIWSAP.f.r.sar-plus', 'LIWSAP.f.r.saq-plus'], SA_SETTINGS['rc'])
+        return
+    C = ['LIWSAP.f.r-plus', 'LIWSAP.f.r.san-plus', 'LIWSAP.f.r.sai-plus', 'LIWSAP.f.r.sar-plus']
+    for st, jvm in SA_SETTINGS.items():
+        runner(RESULTS / f'ideal_{st}_small.jsonl', 'SMALL', a.sa_small_seeds, C, jvm)
+        runner(RESULTS / f'ideal_{st}_large.jsonl', 'LARGE', a.sa_large_seeds, C, jvm)
+    for salt in (1, 2):
+        for st, jvm in SA_SETTINGS.items():
+            runner(RESULTS / f'rep{salt}_{st}_small.jsonl', 'SMALL', a.sa_small_seeds, ['LIWSAP.f.r-plus', 'LIWSAP.f.r.san-plus'], jvm + [f'-Dscensalt={salt}'])
+    for st, jvm in SA_SETTINGS.items():
+        runner(RESULTS / f'quota_{st}_small.jsonl', 'SMALL', a.sa_small_seeds, ['LIWSAP.f.r-plus', 'LIWSAP.f.r.san-plus', 'LIWSAP.f.r.saq-plus'], jvm)
+
+
 def do_figures(a):
     for script in ('paper_statistics.py', 'make_paper_figures.py'):
         r = subprocess.run([sys.executable, str(EXP / script)], cwd=str(EXP))
@@ -152,10 +186,14 @@ def do_figures(a):
         with open(ANALYSIS / 'report_sim.txt', 'w') as f:
             r = subprocess.run([sys.executable, str(EXP / 'sim_report.py')], cwd=str(EXP), stdout=f, stderr=subprocess.STDOUT)
         print(f'wrote {ANALYSIS / "report_sim.txt"} (exit {r.returncode})')
+    # revision analyses (need the full run of the multifidelity and newchecks steps; skipped otherwise)
+    for script in ('make_new_tables.py', 'epsilon_check.py', 'scenario_replay_report.py', 'audit_stats.py', 'fig_gain.py', 'fig_framework.py'):
+        r = subprocess.run([sys.executable, str(EXP / script)], cwd=str(EXP))
+        print(f'{script} exit {r.returncode}')
 
 
 STEPS = {'compile': do_compile, 'seeds': do_seeds, 'fidelity': do_fidelity, 'faithful': do_faithful, 'sensitivity': do_sensitivity,
-         'robustness': do_robustness, 'multifidelity': do_multifidelity, 'simcheck': do_simcheck, 'mlchecks': do_mlchecks, 'figures': do_figures}
+         'robustness': do_robustness, 'multifidelity': do_multifidelity, 'simcheck': do_simcheck, 'mlchecks': do_mlchecks, 'newchecks': do_newchecks, 'scenarioreplay': do_scenarioreplay, 'figures': do_figures}
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)

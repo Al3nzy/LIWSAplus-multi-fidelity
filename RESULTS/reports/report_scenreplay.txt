@@ -1,0 +1,16 @@
+[rc] 4180 (schedule, scenario) replays; 434 schedules from 150 runs on 20 workflows; schedules per algorithm {'NSGA-II': 144, 'LIWSA+': 145, 'MF': 145}
+  |sim - dec|/dec makespan: mean 0.036%  median 0.002%  95th 0.168%  max 10.443%
+  |sim - dec|/dec cost:     mean 0.001%  median 0.000%  95th 0.005%  max 0.078%
+  per-schedule CVaR_0.8 makespan over the replayed scenarios, |sim - dec|/dec: mean 0.029%  max 0.540%
+  Spearman correlation of the per-schedule risk estimate, decoder vs simulator: 1.0000
+  HV of replayed sets, MF vs LIWSA+: dec: +3.63% (median +4.55%, W/L 16/4 of 20, unadjusted p=0.064) | sim: +3.63% (median +4.55%, W/L 16/4 of 20, unadjusted p=0.064)
+  HV of replayed sets, MF vs NSGA-II: dec: +7.36% (median +6.16%, W/L 15/5 of 20, unadjusted p=0.231) | sim: +7.37% (median +6.16%, W/L 15/5 of 20, unadjusted p=0.231)
+  HV of replayed sets, LIWSA+ vs NSGA-II: dec: +3.69% (median +2.77%, W/L 12/8 of 20, unadjusted p=0.452) | sim: +3.70% (median +2.77%, W/L 12/8 of 20, unadjusted p=0.452)
+[rm] 4200 (schedule, scenario) replays; 435 schedules from 150 runs on 20 workflows; schedules per algorithm {'NSGA-II': 145, 'LIWSA+': 145, 'MF': 145}
+  |sim - dec|/dec makespan: mean 0.027%  median 0.005%  95th 0.160%  max 0.402%
+  |sim - dec|/dec cost:     mean 0.001%  median 0.000%  95th 0.005%  max 0.073%
+  per-schedule mean makespan over the replayed scenarios, |sim - dec|/dec: mean 0.025%  max 0.189%
+  Spearman correlation of the per-schedule risk estimate, decoder vs simulator: 1.0000
+  HV of replayed sets, MF vs LIWSA+: dec: +4.26% (median +1.55%, W/L 15/5 of 20, unadjusted p=0.027) | sim: +4.26% (median +1.55%, W/L 15/5 of 20, unadjusted p=0.027)
+  HV of replayed sets, MF vs NSGA-II: dec: +4.14% (median +0.82%, W/L 15/5 of 20, unadjusted p=0.058) | sim: +4.15% (median +0.82%, W/L 15/5 of 20, unadjusted p=0.058)
+  HV of replayed sets, LIWSA+ vs NSGA-II: dec: -0.12% (median -0.78%, W/L 9/11 of 20, unadjusted p=0.812) | sim: -0.12% (median -0.78%, W/L 9/11 of 20, unadjusted p=0.812)

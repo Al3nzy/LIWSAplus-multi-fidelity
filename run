@@ -16,7 +16,7 @@ STEP="python3 experiments/run_experiments.py"
 
 $STEP compile $Q
 $STEP seeds $Q
-for s in fidelity faithful sensitivity robustness multifidelity simcheck mlchecks; do
+for s in fidelity faithful sensitivity robustness multifidelity simcheck mlchecks newchecks; do
   $STEP $s $Q || echo "WARNING: step $s failed"
   mkdir -p "$RESULTS/results" && cp -r "$W/results/." "$RESULTS/results/" || true     # copy after every step so results survive a later failure
 done

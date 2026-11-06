@@ -278,6 +278,17 @@ if all(v for v in sa.values()):
                 parts.append('-- & -- & --' if x[2] is None else f"{x[2]['mean']:+.2f} & {x[2]['wins']}/{x[2]['losses']} & {pfmt(x[3])}")
             L.append(f'{SALAB[a_]} vs {SALAB[b_]} & ' + ' & '.join(parts) + ' \\\\')
         write(tag + '.tex', '\n'.join(L))
+        if tag == 'sa_main':      # row subsets used in the main text (Tables II and V)
+            byname = {r.split(' & ')[0]: r for r in L}
+            for fname, names in (('sa_core', ['MF vs LIWSA+', 'random pre-selection vs LIWSA+', 'MF vs random pre-selection', 'MF vs NSGA-II', 'MF vs SPEA2',
+                                              'MF vs MOEA/D', 'LIWSA+ vs NSGA-II', 'LIWSA+ vs SPEA2']),
+                                 ('sa_learn', ['MF + ridge vs LIWSA+', 'MF + ridge + HVI vs LIWSA+', 'OLS immigrants vs LIWSA+', 'MF + rich ridge vs LIWSA+',
+                                               'MF + boosted trees vs LIWSA+', 'MF vs MF + ridge', 'MF + rich ridge vs MF', 'MF + boosted trees vs MF',
+                                               'MF + boosted trees + HVI vs MF'])):
+                rows = [byname[n] for n in names if n in byname]
+                if rows:
+                    rows[-1] = rows[-1].rstrip()[:-2].rstrip()      # the LaTeX caller supplies the final row end
+                    write(fname + '.tex', '\n'.join(rows))
     L = []
     say('\n== EXPENSIVE-OBJECTIVE STUDY: mean search time (ms), small / 1000-task; expensive evaluations')
     for c in SA_NAMES:

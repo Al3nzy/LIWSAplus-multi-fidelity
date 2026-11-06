@@ -3,7 +3,7 @@
 
     python run_all.py            full run (resumable: finished work is skipped, so an interrupted run can simply be started again)
     python run_all.py --quick    smoke test of the whole chain on a few workflows (minutes)
-    python run_all.py --collect  only (re)collect the outputs of an earlier run
+    python run_all.py --collect  only (re)collect the outputs of an earlier run and rebuild paper/main.pdf
 
 A step that fails does not stop the others; failures are listed at the end and in RESULTS/run_log.txt.
 Windows, Linux and macOS: needs a JDK (javac, java on the PATH, or set JAVAC) and Python 3 with numpy, scipy and matplotlib.
@@ -47,6 +47,32 @@ def collect(work, log):
     print(f'collected into {RESULTS} (open index.html)')
 
 
+def build_paper():
+    """Copy the generated tables and figures into paper/ and compile main.pdf and supplementary.pdf (skipped if no LaTeX is installed)."""
+    paper = ROOT / 'paper'
+    if not paper.exists():
+        return
+    (paper / 'tables').mkdir(exist_ok=True)
+    (paper / 'figs').mkdir(exist_ok=True)
+    for p in (RESULTS / 'tables').glob('*.tex'):
+        shutil.copy2(p, paper / 'tables' / p.name)
+    for p in (RESULTS / 'figures').glob('*.pdf'):
+        shutil.copy2(p, paper / 'figs' / p.name)
+    if not shutil.which('pdflatex'):
+        print('pdflatex not found: tables and figures copied to paper/, PDF not built')
+        return
+    if shutil.which('bash') and (paper / 'build.sh').exists():
+        r = subprocess.run(['bash', 'build.sh'], cwd=str(paper))      # strict build: fails on undefined references or '??' in the PDF
+        print('strict paper build', 'passed' if r.returncode == 0 else 'FAILED')
+        return
+    def run(*cmd):
+        subprocess.run(cmd, cwd=str(paper), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    for doc in ('supplementary', 'main'):
+        run('pdflatex', '-interaction=nonstopmode', doc); run('bibtex', doc)
+        run('pdflatex', '-interaction=nonstopmode', doc); run('pdflatex', '-interaction=nonstopmode', doc)
+    print('paper built:', paper / 'main.pdf')
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--quick', action='store_true')
@@ -59,6 +85,8 @@ def main():
     RESULTS.mkdir(exist_ok=True)
     if a.collect:
         collect(work, None)
+        if not a.quick:
+            build_paper()
         return
     sys.path.insert(0, str(EXP))
     sys.argv = ['run_experiments.py']
@@ -82,6 +110,8 @@ def main():
         if proc.returncode != 0:
             failed.append(s)
     collect(work, log)
+    if not a.quick:
+        build_paper()
     summary = f'finished in {(time.time() - t0) / 60:.1f} min; failed steps: {failed or "none"}'
     print('\n' + summary); log.write(summary + '\n'); log.close()
     sys.exit(1 if failed else 0)

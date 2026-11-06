@@ -38,6 +38,11 @@ def main(path):
     dm = [abs(float(r['sim_makespan']) - float(r['dec_makespan'])) / float(r['dec_makespan']) for r in rows]
     dc = [abs(float(r['sim_cost']) - float(r['dec_cost'])) / float(r['dec_cost']) for r in rows]
     print('\nmedian |simulator - decoder| / decoder: makespan %.2f%%, cost %.2f%% (n=%d replayed schedules)' % (100 * np.median(dm), 100 * np.median(dc), len(rows)))
+    q = lambda v, p: 100 * np.percentile(v, p)
+    print('|simulator - decoder| / decoder, makespan: mean %.3f%%, median %.3f%%, 95th pct %.3f%%, max %.3f%%' % (100 * np.mean(dm), q(dm, 50), q(dm, 95), 100 * np.max(dm)))
+    print('|simulator - decoder| / decoder, cost:     mean %.3f%%, median %.3f%%, 95th pct %.3f%%, max %.3f%%' % (100 * np.mean(dc), q(dc, 50), q(dc, 95), 100 * np.max(dc)))
+    per = collections.Counter(r['cond'] for r in rows)
+    print('replayed schedules per algorithm:', dict(per), '; runs per algorithm:', {c: sum(1 for k in pts if k[1] == c) for c in conds})
 
 if __name__ == '__main__':
     main(sys.argv[1] if len(sys.argv) > 1 else str(RESULTS / 'sim_faithful_small.csv'))

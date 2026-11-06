@@ -1,0 +1,8 @@
+family size per objective and subset table: 27 comparisons
+rc all 20         : max |independent Holm - table Holm| = 0.00e+00; smallest raw p 0.0001, smallest adjusted 0.0017
+rc 15 held-out    : max |independent Holm - table Holm| = 0.00e+00; smallest raw p 0.0001, smallest adjusted 0.0016
+rc five 1000-task : max |independent Holm - table Holm| = 0.00e+00; smallest raw p 0.0625, smallest adjusted 1.0000
+rm all 20         : max |independent Holm - table Holm| = 0.00e+00; smallest raw p 0.0000, smallest adjusted 0.0001
+rm 15 held-out    : max |independent Holm - table Holm| = 0.00e+00; smallest raw p 0.0001, smallest adjusted 0.0016
+rm five 1000-task : max |independent Holm - table Holm| = 0.00e+00; smallest raw p 0.0625, smallest adjusted 1.0000
+overall maximum difference 0.00e+00

@@ -186,6 +186,9 @@ public class ExperimentRunner {
         LIWSAPlanningAlgorithm.CONFIG_ROBUST_MIPS_LOW = Double.parseDouble(System.getProperty("mipslow", "0.6"));
         LIWSAPlanningAlgorithm.CONFIG_ROBUST_SIGMA = Double.parseDouble(System.getProperty("sigma", "0.25"));
         LIWSAPlus.CONFIG_SA_MODE = 0;
+        LIWSAPlus.CONFIG_SA_IDEAL = false;
+        LIWSAPlus.CONFIG_SA_QUOTA = 0.0;
+        LIWSAPlanningAlgorithm.CONFIG_SCEN_SALT = Long.getLong("scensalt", 0L);
         LIWSAPlus.CONFIG_IMM = false;
         LIWSAPlus.CONFIG_SA_HVI = false;
         LIWSAPlus.CONFIG_SA_MIX = false;
@@ -208,6 +211,8 @@ public class ExperimentRunner {
                 case "f": LIWSAPlanningAlgorithm.CONFIG_FAITHFUL = true; break;
                 case "r": LIWSAPlanningAlgorithm.CONFIG_ROBUST_S = Integer.getInteger("robust", 20); break;
                 case "san": LIWSAPlus.CONFIG_SA_MODE = 1; break;
+                case "saq": LIWSAPlus.CONFIG_SA_MODE = 1; LIWSAPlus.CONFIG_SA_QUOTA = 0.2; break;
+                case "sai": LIWSAPlus.CONFIG_SA_MODE = 1; LIWSAPlus.CONFIG_SA_IDEAL = true; break;
                 case "sao": LIWSAPlus.CONFIG_SA_MODE = 2; break;
                 case "sar": LIWSAPlus.CONFIG_SA_MODE = 3; break;
                 case "sal": LIWSAPlus.CONFIG_SA_MODE = 4; break;
@@ -266,6 +271,7 @@ public class ExperimentRunner {
         alg.setTaskList(tasks);
         alg.setVmList(vms);
         alg.run();
+        LIWSAPlanningAlgorithm.lastAlgorithm = alg;
         LIWSAPlanningAlgorithm.LastRunMetrics m = LIWSAPlanningAlgorithm.lastRun;
         front = m.paretoFrontPoints;
         archive = m.archiveFront;

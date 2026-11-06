@@ -90,6 +90,8 @@ public class LIWSAPlanningAlgorithm extends BasePlanningAlgorithm {
      */
     public static int CONFIG_POPULATION_SIZE = 30;
     public static int CONFIG_GENERATION_COUNT = 100;
+    /** Replication control: offsets the scenario seeds of both the search and the out-of-sample set (0 = published runs). */
+    public static long CONFIG_SCEN_SALT = 0;
     public static Long CONFIG_RANDOM_SEED = null;
 
     /**
@@ -190,7 +192,7 @@ public class LIWSAPlanningAlgorithm extends BasePlanningAlgorithm {
 
     /** Non-dominated front of the expected objectives of the given genotypes under FRESH scenarios (out-of-sample). */
     public List<double[]> outOfSampleFront(List<int[]> genos, int S) {
-        double[][][] sc = scenarios(S, 424242L + 31L * nTasks);
+        double[][][] sc = scenarios(S, 424242L + 31L * nTasks + 1000003L * CONFIG_SCEN_SALT);
         List<double[]> pts = new ArrayList<>();
         for (int[] g : genos) {
             if (g != null) {
@@ -215,6 +217,21 @@ public class LIWSAPlanningAlgorithm extends BasePlanningAlgorithm {
 
     /** If non-null, run() only commits this genotype (used to replay a schedule inside the simulator). */
     public static int[] CONFIG_FORCED_GENOTYPE = null;
+
+    /** Replay control: per-task length multipliers (indexed like the genotype) applied inside the simulator; null = nominal. */
+    public static double[] CONFIG_SIM_LENMULT = null;
+    /** The algorithm instance of the latest search run (not of forced replays). */
+    public static LIWSAPlanningAlgorithm lastAlgorithm = null;
+
+    /** The first S scenarios of the out-of-sample scoring set: {length multipliers [S][n], speed multipliers [S][m]}. */
+    public double[][][] replayScenarios(int S) {
+        return scenarios(S, 424242L + 31L * nTasks + 1000003L * CONFIG_SCEN_SALT);
+    }
+
+    /** Decoder objectives {makespan, cost} of a genotype under one scenario. */
+    public double[] decodeScenario(int[] g, double[] lenMult, double[] mipsMult) {
+        return faithful.decodePerturbed(g, lenMult, mipsMult);
+    }
 
     /** Set true by experiment drivers to record convergence checkpoints. */
     public static boolean CONFIG_TRACE = false;
@@ -388,9 +405,16 @@ public class LIWSAPlanningAlgorithm extends BasePlanningAlgorithm {
                 + " tasks, " + getVmList().size() + " VMs.");
         if (CONFIG_FORCED_GENOTYPE != null) {
             setupProblem();
+            if (CONFIG_SIM_LENMULT != null) {          // replay under a scenario: scale the task lengths the simulator will execute
+                for (int k = 0; k < taskOrder.size(); k++) {
+                    Task t = taskOrder.get(k);
+                    t.setCloudletLength(Math.max(1L, Math.round(t.getCloudletLength() * CONFIG_SIM_LENMULT[k])));
+                }
+            }
             commitAssignment(CONFIG_FORCED_GENOTYPE);
             return;
         }
+        lastAlgorithm = this;
         long searchStartMillis = System.currentTimeMillis();
         runStartNanos = System.nanoTime();
 
@@ -484,7 +508,7 @@ public class LIWSAPlanningAlgorithm extends BasePlanningAlgorithm {
         robLen = null;
         robMips = null;
         if (faithful != null && CONFIG_ROBUST_S > 0) {
-            double[][][] sc = scenarios(CONFIG_ROBUST_S, 7919L * nTasks + 131L * nVms + 17L);
+            double[][][] sc = scenarios(CONFIG_ROBUST_S, 7919L * nTasks + 131L * nVms + 17L + 1000003L * CONFIG_SCEN_SALT);
             robLen = sc[0];
             robMips = sc[1];
         }
@@ -789,6 +813,11 @@ public class LIWSAPlanningAlgorithm extends BasePlanningAlgorithm {
             }
             return faithful.decode(genotype);
         }
+        return decodeIdeal(genotype);
+    }
+
+    /** Analytic gap-filling (planning-level) decoder; used as the objective when the faithful decoder is off and as an alternative screening model. */
+    protected double[] decodeIdeal(int[] genotype) {
         java.util.Arrays.fill(evCount, 0);
         double cost = 0.0;
         for (int k = 0; k < nTasks; k++) {

@@ -111,12 +111,16 @@ public class SeedBuilder {
         System.out.println(wf + " " + alg + " sim makespan=" + m.makespan + " cost=" + m.cost);
     }
 
+    /** Replay control: per-VM speed multipliers (VM id order); null = nominal speeds. */
+    static double[] SIM_MIPSMULT = null;
+
     static List<CondorVM> createVMs(int userId) {
         LinkedList<CondorVM> list = new LinkedList<>();
         int vmId = 0;
         for (double[] type : StandaloneHarness.VM_TYPES) {
             for (int k = 0; k < (int) type[5]; k++) {
-                list.add(new CondorVM(vmId++, userId, type[0], 1, (int) type[3], (long) type[1], (long) type[4],
+                double speedFactor = SIM_MIPSMULT == null ? 1.0 : SIM_MIPSMULT[vmId];
+                list.add(new CondorVM(vmId++, userId, type[0] * speedFactor, 1, (int) type[3], (long) type[1], (long) type[4],
                         "Xen", type[2], 0.0, 0.0, 0.0, new CloudletSchedulerSpaceShared()));
             }
         }

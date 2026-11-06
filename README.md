@@ -200,15 +200,33 @@ python experiments/run_experiments.py paper
 ```
 
 Add `--quick` to the direct experiment command for a smaller run. The complete
-paper run takes about 1.5 hours on one core; runtime varies by machine. The
-driver is resumable and skips completed work.
+paper run takes roughly 3 hours on one core (about 1.5 hours for the
+original steps plus about one hour for `newchecks` and about half an hour for `scenarioreplay`); runtime varies by machine.
+The driver is resumable and skips completed work.
 
-The pipeline runs compilation, seed generation, fidelity and robustness
-experiments, analysis, and figure generation. Outputs are collected in
-`RESULTS/`; intermediate experiment data is written to
-`experiments/work/`. Individual stages can also be run directly:
-`compile`, `seeds`, `fidelity`, `faithful`, `sensitivity`, `robustness`,
-`multifidelity`, `simcheck`, `mlchecks`, and `figures`.
+`python run_all.py` runs, in this order: `compile`, `seeds`, `fidelity`,
+`faithful`, `sensitivity`, `robustness`, `multifidelity`, `simcheck`,
+`mlchecks`, `newchecks`, `scenarioreplay`, `figures`, then collects every output into `RESULTS/`
+and rebuilds the paper (`paper/main.pdf`, `paper/supplementary.pdf`) from the
+generated tables and figures when LaTeX is installed; the build is strict and
+fails on undefined references or unresolved `??` markers. Intermediate experiment
+data is written to `experiments/work/`. Individual stages can be run directly,
+for example `python experiments/run_experiments.py newchecks`.
+
+| Step | What it produces |
+|---|---|
+| `compile`, `seeds` | compiled classes; shared HEFT/Min-Min seed schedules |
+| `fidelity` | decoder-versus-simulator error (idealised and faithful decoder) |
+| `faithful`, `sensitivity`, `robustness` | nominal-objective study, parameter sensitivity, perturbation robustness |
+| `multifidelity`, `mlchecks` | scenario-based study (CVaR and expected value): pre-screening, learned corrections, diagnostics |
+| `simcheck` | replay of archive solutions in WorkflowSim |
+| `scenarioreplay` | archive solutions of the scenario-based study replayed in WorkflowSim with task lengths and VM speeds scaled per scoring scenario (decoder versus simulator) |
+| `newchecks` | screening with the idealised decoder, random pre-selection, two replications with new scenario sets (`-Dscensalt`), quota fallback |
+| `figures` | all statistics, LaTeX tables (including the revision tables) and all figures (including `fig_framework`, `fig_gain`) |
+
+The new controls are switched by condition tokens (`sai` idealised screening,
+`saq` quota 0.2, `sar` random) and by `-Dscensalt=k`; with none of them set,
+every earlier result is reproduced unchanged.
 
 ## 🔬 Reproducing and interpreting results
 
@@ -238,6 +256,7 @@ sources/                          Reduced simulator sources and scheduling code
 RESULTS/                          Collected figures, reports, and LaTeX tables
 run_all.py                        Cross-platform pipeline entry point
 run_all.bat                       Windows pipeline shortcut
+paper/                            Manuscript and supplementary LaTeX (tables and figures come from RESULTS/)
 ```
 
 To verify a copy against the included manifest, run:

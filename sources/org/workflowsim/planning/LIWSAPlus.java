@@ -36,6 +36,10 @@ public class LIWSAPlus extends MOEAHosts {
     /** Surrogate-assisted pre-screening of candidate children (needs the faithful decoder): 0 off, 1 nominal decoder only,
      *  2 nominal decoder corrected by an online ridge model of the expensive objective, 3 random choice (null control). */
     public static int CONFIG_SA_MODE = 0;
+    /** Control: screen candidates with the analytic gap-filling decoder instead of the faithful nominal decoder (mode 1 only). */
+    public static boolean CONFIG_SA_IDEAL = false;
+    /** Exploration quota: fraction of the kept children drawn at random from the screened pool (0 = pure ranking). */
+    public static double CONFIG_SA_QUOTA = 0.0;
     public static int CONFIG_SA_K = 5;                 // candidates generated per child that is actually evaluated
     public static double CONFIG_SA_RIDGE = 0.1;
     /** Selection rule: false = Pareto rank among the candidates only; true = greedy predicted hypervolume improvement over the
@@ -443,6 +447,26 @@ public class LIWSAPlus extends MOEAHosts {
 
     /** Chooses nChildren of the candidates by predicted Pareto rank and crowding (candidates only); computes nominal features. */
     private int[] selectCandidates(int[][] cand, double[][] candFeat, int nChildren) {
+        int[] out = selectCandidatesCore(cand, candFeat, nChildren);
+        int q = (int) Math.round(CONFIG_SA_QUOTA * nChildren);
+        if (q > 0 && cand.length > nChildren) {
+            boolean[] taken = new boolean[cand.length];
+            for (int i = 0; i < nChildren - q; i++) {
+                taken[out[i]] = true;
+            }
+            for (int i = nChildren - q; i < nChildren; i++) {
+                int c;
+                do {
+                    c = random.nextInt(cand.length);
+                } while (taken[c]);
+                taken[c] = true;
+                out[i] = c;
+            }
+        }
+        return out;
+    }
+
+    private int[] selectCandidatesCore(int[][] cand, double[][] candFeat, int nChildren) {
         int nc = cand.length;
         double[] pm = new double[nc];
         double[] pc = new double[nc];
@@ -465,6 +489,11 @@ public class LIWSAPlus extends MOEAHosts {
             candFeat[c] = f;
             pm[c] = f[0];
             pc[c] = f[1];
+            if (CONFIG_SA_IDEAL) {
+                double[] id = decodeIdeal(cand[c]);
+                pm[c] = id[0];
+                pc[c] = id[1];
+            }
             if (useModel) {
                 double[] lr = corr(f);
                 pm[c] *= Math.exp(lr[0]);

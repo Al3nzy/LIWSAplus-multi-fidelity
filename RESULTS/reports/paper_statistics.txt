@@ -386,4 +386,7 @@ Planning-level (decoder) HV of the SAME replayed points, for reference
    LIWSAP.f-plus vs NSGA2.f-plus    -0.06% [-0.55,+0.37] med +0.08%  W/L 9/6 of 15  p=0.9780
 
 median |simulator - decoder| / decoder: makespan 0.00%, cost 0.00% (n=1104 replayed schedules)
+|simulator - decoder| / decoder, makespan: mean 0.009%, median 0.000%, 95th pct 0.069%, max 1.444%
+|simulator - decoder| / decoder, cost:     mean 0.010%, median 0.000%, 95th pct 0.074%, max 0.182%
+replayed schedules per algorithm: {'NSGA2.f-plus': 225, 'SPEA2.f-plus': 225, 'MOEAD.f-plus': 216, 'LIWSAP.f-plus': 225, 'LIWSA.f-plus': 213} ; runs per algorithm: {'LIWSA.f-plus': 45, 'LIWSAP.f-plus': 45, 'MOEAD.f-plus': 45, 'NSGA2.f-plus': 45, 'SPEA2.f-plus': 45}
 
